@@ -16,7 +16,6 @@ import { useState } from 'react';
 import { MdOutlineTravelExplore } from "react-icons/md";
 import { SvgIcon } from '@mui/material';
 import { Link } from 'react-router-dom';
-let yttyr;
 
 const pages = ["about us", "author's choice"];
 const settings = ['Edit Profile', 'My Trips', 'Saved Trips', 'Likes', 'Comments', 'Logout'];

@@ -1,4 +1,4 @@
-import { createTheme, ThemeProvider, CssBaseline } from '@mui/material';
+import { createTheme } from '@mui/material';
 import { colors } from './colors';
 
 export const colorTheme = createTheme({
@@ -8,7 +8,7 @@ export const colorTheme = createTheme({
             contrastText: '#ffffff',
         },
         secondary: {
-            main: colors.brandGreen,
+            main: colors.brandSand,
             contrastText: '#ffffff',
         },
         success: {
@@ -18,7 +18,7 @@ export const colorTheme = createTheme({
             brandPurple: colors.brandPurple,
             brandSand: colors.brandSand,
             brandWhite: colors.brandWhite,
-            brandBrownish: colors.brandBrownish,
+            brandBrownish: colors.brandBrownish, brandGreen: colors.brandGreen,
         }
     },
 })

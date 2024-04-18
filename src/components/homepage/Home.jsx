@@ -3,6 +3,7 @@ import { Box, Typography } from "@mui/material"
 import TravelVideo from "./TravelVideo"
 import { colors } from "../../utils/colors"
 
+
 function Home() {
     return (
         <>

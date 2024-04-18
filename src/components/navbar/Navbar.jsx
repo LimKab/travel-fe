@@ -1,4 +1,4 @@
-import './navbar.css'
+
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -41,7 +41,7 @@ function NavBar() {
 
     return (
         <div >
-            <AppBar position="static" sx={{ bgcolor: '#043F33', minHeight: 56, height: 56 }}>
+            <AppBar position="static" sx={{ bgcolor: 'primary', minHeight: 56, height: 56 }}>
                 <Container maxWidth="xl">
                     <Toolbar disableGutters sx={{ minHeight: '56px !important', height: 56 }}>
                         <SvgIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}>

@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material"
-// import SearchForm from "../search/SearchForm"
 import TravelVideo from "./TravelVideo"
-import { colors } from "../../utils/colors"
+import { colors } from "../../../utils/colors"
+import GenerateForm from "../../forms/GenerateForm"
 
 
 function Home() {
@@ -22,7 +22,7 @@ function Home() {
                 <Typography variant="h3" display="block" gutterBottom color={colors.brandWhite}>
                     Experience your AI generated trip!
                 </Typography>
-                {/* <SearchForm /> */}
+                <GenerateForm />
             </Box>
             <TravelVideo />
         </>

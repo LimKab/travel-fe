@@ -18,6 +18,7 @@ import { SvgIcon } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 
 const pages = ["about us", "author's choice"];
+const settings = ['My Trips', 'Saved Trips', 'Likes', 'Comments', 'Logout'];
 
 function NavBar() {
     const [anchorElNav, setAnchorElNav] = useState(null);
@@ -160,6 +161,11 @@ function NavBar() {
                                 <MenuItem key='Edit Profile' onClick={() => navigate('/profile')}>
                                     <Typography textAlign="center" >Edit Profile</Typography>
                                 </MenuItem>
+                                {settings.map((setting) => (
+                                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                                        <Typography textAlign="center">{setting}</Typography>
+                                    </MenuItem>
+                                ))}
                             </Menu>
                         </Box>
                     </Toolbar>

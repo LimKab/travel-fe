@@ -15,7 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { useState } from 'react';
 import { MdOutlineTravelExplore } from "react-icons/md";
 import { SvgIcon } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const pages = ["about us", "author's choice"];
 const settings = ['Edit Profile', 'My Trips', 'Saved Trips', 'Likes', 'Comments', 'Logout'];
@@ -23,6 +23,7 @@ const settings = ['Edit Profile', 'My Trips', 'Saved Trips', 'Likes', 'Comments'
 function NavBar() {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
+    const navigate = useNavigate()
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -157,11 +158,11 @@ function NavBar() {
                                 open={Boolean(anchorElUser)}
                                 onClose={handleCloseUserMenu}
                             >
-                                {settings.map((setting) => (
-                                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="center">{setting}</Typography>
-                                    </MenuItem>
-                                ))}
+
+                                <MenuItem key='Edit Profile' onClick={() => navigate('/profile')}>
+                                    <Typography textAlign="center" >Edit Profile</Typography>
+                                </MenuItem>
+
                             </Menu>
                         </Box>
                     </Toolbar>

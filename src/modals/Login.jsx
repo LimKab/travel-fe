@@ -4,7 +4,6 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import LoginForm from "../components/forms/LoginForm";
-import { reqUserLogin } from '../DB requests/UserData_Requests';
 
 const style = {
     position: "absolute",
@@ -23,8 +22,6 @@ export default function Login() {
     const handleClose = () => setOpen(false);
 
     const onSubmit = async (data) => {
-        const login = await reqUserLogin(data)
-        console.log(login)
         handleClose()
     }
 

@@ -3,8 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import LoginForm from "../components/forms/LoginForm";
-import { reqUserLogin } from '../DB requests/UserData_Requests';
+import LoginForm from "../forms/LoginForm";
 
 const style = {
     position: "absolute",
@@ -20,18 +19,14 @@ const style = {
 
 export default function Login() {
     const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     const onSubmit = async (data) => {
-        const login = await reqUserLogin(data)
-        console.log(login)
         handleClose()
     }
 
     return (
         <div style={{ margin: "25%" }}>
-            <Button onClick={handleOpen}>Open modal</Button>
             <Modal
                 open={open}
                 onClose={handleClose}

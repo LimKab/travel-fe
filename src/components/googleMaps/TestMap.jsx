@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import GoogleMaps from "./components/GoogleMapsComp";
+import GoogleMaps from "./GoogleMaps";
 import Form from "react-bootstrap/Form";
 
 

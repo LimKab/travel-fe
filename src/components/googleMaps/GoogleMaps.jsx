@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 
-function GoogleMaps({ coordinates, nameQuerry }) {
+function GoogleMaps({ nameQuery }) {
     const google = window.google;
-
 
     useEffect(() => {
         let map;
@@ -10,28 +9,26 @@ function GoogleMaps({ coordinates, nameQuerry }) {
         let infowindow;
 
         const initMap = () => {
-            const center = new google.maps.LatLng(coordinates.center.lat, coordinates.center.lng);
             infowindow = new google.maps.InfoWindow();
             map = new google.maps.Map(document.getElementById("map"), {
-                center: center,
-                zoom: coordinates.zoom,
+                zoom: 11,
             });
 
-
             const request = {
-                query: nameQuerry,
+                query: nameQuery,
                 fields: ["name", "geometry"],
             };
 
             service = new google.maps.places.PlacesService(map);
             service.findPlaceFromQuery(request, (results, status) => {
-                console.log(request.query)
                 if (status === google.maps.places.PlacesServiceStatus.OK && results) {
                     for (let i = 0; i < results.length; i++) {
                         createMarker(results[i]);
                     }
 
-                    map.setCenter(results[0].geometry.location);
+                    if (results[0].geometry && results[0].geometry.location) {
+                        map.setCenter(results[0].geometry.location);
+                    }
                 }
             });
         };
@@ -46,18 +43,17 @@ function GoogleMaps({ coordinates, nameQuerry }) {
 
             google.maps.event.addListener(marker, "click", () => {
                 infowindow.setContent(place.name || "");
-                infowindow.open(map);
+                infowindow.open(map, marker);
             });
         };
 
         initMap();
-    }, [coordinates, nameQuerry]); // Run effect when coordinates change
+    }, [nameQuery]);
 
     return (
         <div>
             <div style={{ height: '50vh', width: '100%' }} id="map"></div>
         </div>
-
     );
 }
 

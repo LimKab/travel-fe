@@ -5,6 +5,8 @@ import Home from './components/homepage/Home';
 import Profile from './components/profile/Profile';
 import About from './components/about/About';
 import AuthorsChoice from './components/authorsChoice/AuthorsChoice';
+import Comments from './TripResults/Comments';
+import TripCard from './TripResults/TripCard';
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/authors-choice' element={<AuthorsChoice />} />
+        <Route path='/tripresults' element={<TripCard />} />
       </Routes>
     </Router>
   );

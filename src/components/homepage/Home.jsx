@@ -20,7 +20,7 @@ function Home() {
                 justifyContent="center"
             >
                 <Typography variant="h3" display="block" gutterBottom color={colors.brandWhite}>
-                    Experience your AI generated trip!
+                    Experience your AI-generated trip!
                 </Typography>
                 {/* <SearchForm /> */}
             </Box>

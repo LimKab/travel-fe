@@ -1,0 +1,48 @@
+textarea {
+    border-radius: 8px;
+    border: none;
+    width: 70rem;
+    height: 1.5rem;
+    padding-left: 0.5rem;
+    font-family: 'Roboto';
+    line-height: 25px;
+    margin-left: 1rem;
+    margin-top: 0.35rem;
+    margin-bottom: 3.5rem;
+    font-size: 14px;
+}
+
+.comments {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-left: 1rem;
+}
+
+.past-comments {
+    width: 70.75rem;
+    margin-left: 1rem;
+    background-color: white;
+    border-radius: 8px;
+    border: none;
+    text-align: left;
+}
+
+.past-comments p {
+    margin-top: 0.5em;
+    padding-left: 0.5rem;
+    font-size: 14px;
+}
+
+.user-name {
+    font-weight: 500;
+}
+
+.comment-details {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.date {
+    color: gray;
+    margin-left: 1rem;
+}

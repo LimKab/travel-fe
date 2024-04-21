@@ -6,11 +6,11 @@ export const season = [
 ]
 
 export const experience = [
-    { name: 'calture' },
+    { name: 'culture' },
     { name: 'nature' },
     { name: 'shopping' },
     { name: 'honeymoon' },
-    { name: 'food' }
+    { name: 'cuisine' }
 ]
 
 export const budget = [

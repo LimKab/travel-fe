@@ -20,6 +20,7 @@ function GenerateForm() {
 
     function onSubmit(formData) {
         console.log(formData);
+        //http://localhost:3001/gpt/post
     }
 
     return (

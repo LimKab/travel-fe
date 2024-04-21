@@ -2,9 +2,9 @@ import './App.css';
 import NavBar from './components/navbar/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/homepage/Home';
-import Profile from './components/profile/Profile';
-import About from './components/about/About';
-import AuthorsChoice from './components/authorsChoice/AuthorsChoice';
+import Profile from './components/pages/profile/Profile';
+import About from './components/pages/about/About';
+import AuthorsChoice from './components/pages/authorsChoice/AuthorsChoice';
 import Comments from './TripResults/Comments';
 import TripCard from './TripResults/TripCard';
 

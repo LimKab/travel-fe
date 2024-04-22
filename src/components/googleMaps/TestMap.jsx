@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import axios from "axios";
 import GoogleMaps from "./GoogleMaps";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
+import { useState } from "react";
 
 function TestMaps() {
     const [nameQuery, setNameQuery] = useState('Israel');
@@ -31,7 +31,7 @@ function TestMaps() {
             console.log(error.status);
         }
     };
- const countryOptions = [
+    const countryOptions = [
         { name: "Afghanistan", code: "AF" },
         { name: "Åland Islands", code: "AX" },
         { name: "Albania", code: "AL" },
@@ -314,4 +314,3 @@ function TestMaps() {
 
 export default TestMaps;
 
-   

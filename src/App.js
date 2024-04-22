@@ -7,6 +7,7 @@ import About from './components/pages/about/About';
 import AuthorsChoice from './components/pages/authorsChoice/AuthorsChoice';
 // import Comments from './TripResults/Comments';
 // import TripCard from './TripResults/TripCard';
+// import TestMaps from './components/googleMaps/TestMap.jsx';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/profile' element={<Profile />} />
         <Route path='/authors-choice' element={<AuthorsChoice />} />
         {/* <Route path='/tripresults' element={<TripCard />} /> */}
+        {/* <Route path='/googleMaps' element={<TestMaps />} /> */}
       </Routes>
     </Router>
   );

@@ -5,10 +5,14 @@ import Home from './components/pages/homepage/Home';
 import Profile from './components/pages/profile/Profile';
 import About from './components/pages/about/About';
 import AuthorsChoice from './components/pages/authorsChoice/AuthorsChoice';
+// import Comments from './TripResults/Comments';
+// import TripCard from './TripResults/TripCard';
+// import TestMaps from './components/googleMaps/TestMap.jsx';
 import TestMaps from './components/googleMaps/TestMap.jsx';
 import UserData from './contexts/UserData.js';
 import { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
+
 
 function App() {
 
@@ -16,21 +20,16 @@ function App() {
 
 
   return (
-    <>
-      <UserData.Provider value={{ userdata, setUserdata }}>
-        <Router>
-          <NavBar />
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/profile' element={<Profile />} />
-            <Route path='/authors-choice' element={<AuthorsChoice />} />
-            <Route path='/googleMaps' element={<TestMaps />} />
-          </Routes>
-        </Router>
-      </UserData.Provider>
-      < ToastContainer />
-    </>
+    <Router>
+      <NavBar />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/profile' element={<Profile />} />
+        <Route path='/authors-choice' element={<AuthorsChoice />} />
+        <Route path='/googleMaps' element={<TestMaps />} />
+      </Routes>
+    </Router>
   );
 }
 

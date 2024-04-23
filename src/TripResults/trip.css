@@ -1,0 +1,52 @@
+.outer-container {
+    width: 683px;
+    height: 692px;
+    background-color: #DDD8CB;
+    border-radius: 10px;
+}
+
+h2 {
+    color: #454553;
+    font-size: 25px;
+    text-align: left;
+}
+
+.chip {
+    height: 1.35rem !important;
+    font-size: 13px !important;
+    margin-right: 1rem;
+    color: white !important;
+    background-color: #7A7E6D !important;
+}
+
+.destination-and-filters {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+.filters {
+    margin-top: 2rem;
+}
+
+.inner-left-container,
+.inner-right-container {
+    background-color: white;
+    border-radius: 10px;
+    height: 187px;
+}
+
+.inner-left-container {
+    width: 52rem !important;
+    padding: 1rem;
+}
+
+.inner-right-container {
+    width: 17rem !important;
+}
+
+.inner-containers {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+}

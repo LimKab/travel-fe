@@ -20,16 +20,21 @@ function App() {
 
 
   return (
-    <Router>
-      <NavBar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/profile' element={<Profile />} />
-        <Route path='/authors-choice' element={<AuthorsChoice />} />
-        <Route path='/googleMaps' element={<TestMaps />} />
-      </Routes>
-    </Router>
+    <>
+      <UserData.Provider value={{ userdata, setUserdata }}>
+        <Router>
+          <NavBar />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/authors-choice' element={<AuthorsChoice />} />
+            <Route path='/googleMaps' element={<TestMaps />} />
+          </Routes>
+        </Router>
+      </UserData.Provider>
+      < ToastContainer />
+    </>
   );
 }
 

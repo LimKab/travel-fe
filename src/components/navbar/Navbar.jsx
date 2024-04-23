@@ -37,7 +37,7 @@ function NavBar() {
     const [showSignUp, setShowSignUp] = useState(false)
 
     function logout() {
-        setUserdata(null)
+        setUserdata()
         sessionStorage.clear()
     }
 

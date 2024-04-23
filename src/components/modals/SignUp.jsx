@@ -6,13 +6,13 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 
-import LoginForm from "../forms/LoginForm";
 import UserData from "../../contexts/UserData";
-import { reqUserData } from "../../DB requests/UserData_Requests";
+import { reqUserData, reqUserSignup } from "../../DB requests/UserData_Requests";
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { toastTopCenter } from "../../utils/toasts";
+import SignUpForm from "../forms/SignUpForm";
 
 const style = {
     position: "absolute",
@@ -26,15 +26,15 @@ const style = {
     p: 4,
 };
 
-const notify = () => toast.error('Wrong Email or Password', toastTopCenter);
+const notify = () => toast.error('User with this email already exist', toastTopCenter);
 
-export default function Login({ showModal, setShowModal }) {
+export default function SignUp({ showModal, setShowModal }) {
     const handleClose = () => setShowModal(false);
     const { setUserdata } = useContext(UserData)
 
     const onSubmit = async (data) => {
         try {
-            const { user, token } = await reqUserData(data)
+            const { user, token } = await reqUserSignup(data)
             setUserdata(user)
             sessionStorage.setItem('userdata', JSON.stringify(user));
             sessionStorage.setItem('token', JSON.stringify(token));
@@ -42,7 +42,6 @@ export default function Login({ showModal, setShowModal }) {
         } catch (error) {
             notify()
         }
-
     }
 
     return (
@@ -55,9 +54,9 @@ export default function Login({ showModal, setShowModal }) {
             >
                 <Box sx={style}>
                     <Typography id="modal-login-title" variant="h6" component="h2">
-                        Login
+                        SignUp
                     </Typography>
-                    <LoginForm onSubmit={onSubmit} />
+                    <SignUpForm onSubmit={onSubmit} />
                     <Button onClick={handleClose}>Close window</Button>
                 </Box>
             </Modal>

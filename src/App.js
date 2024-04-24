@@ -6,12 +6,13 @@ import Profile from './components/pages/profile/Profile';
 import About from './components/pages/about/About';
 import AuthorsChoice from './components/pages/authorsChoice/AuthorsChoice';
 // import Comments from './TripResults/Comments';
-// import TripCard from './TripResults/TripCard';
+import TripCard from './TripResults/TripCard';
 // import TestMaps from './components/googleMaps/TestMap.jsx';
 import TestMaps from './components/googleMaps/TestMap.jsx';
 import UserData from './contexts/UserData.js';
 import { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
+import TripResults from './components/pages/resultsPage/TripResults.jsx';
 
 
 function App() {
@@ -27,9 +28,11 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/about' element={<About />} />
-            <Route path='/profile' element={<Profile />} />
+            {userdata && <Route path='/profile' element={<Profile />} />}
             <Route path='/authors-choice' element={<AuthorsChoice />} />
             <Route path='/googleMaps' element={<TestMaps />} />
+            <Route path='/results' element={<TripResults />} />
+            <Route path='/tripresults' element={<TripCard />} />
           </Routes>
         </Router>
       </UserData.Provider>

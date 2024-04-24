@@ -5,6 +5,7 @@ import { useState } from "react"
 import { countryOptions } from "../../utils/arrays/countries"
 import SelectionInput from "../smallerComponents/SelectionInput"
 import { budget, experience, season } from "../../utils/arrays/optionsArrays"
+import { useNavigate } from "react-router-dom"
 
 
 function GenerateForm() {
@@ -17,10 +18,12 @@ function GenerateForm() {
         }
     })
     const [error, setError] = useState(null)
+    const navigate = useNavigate()
 
     function onSubmit(formData) {
         console.log(formData);
         //http://localhost:3001/gpt/post
+        navigate('/results')
     }
 
     return (

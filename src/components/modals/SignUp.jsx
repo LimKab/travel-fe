@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 
 import UserData from "../../contexts/UserData";
-import { reqUserData, reqUserSignup } from "../../DB requests/UserData_Requests";
+import { reqUserSignup } from "../../DB requests/UserData_Requests";
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

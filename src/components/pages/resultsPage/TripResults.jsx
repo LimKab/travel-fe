@@ -1,11 +1,11 @@
 import { useState } from "react"
-import GenerateForm from "../../forms/GenerateForm"
+import TripForm from "../../forms/TripForm"
 import TripSmallCard from "./TripSmallCard"
 import { Box } from "@mui/material"
 import { colors } from "../../../utils/colors"
 
 function TripResults() {
-    const [trips, setTrips] = useState([{
+    const [trips, setTrips] = useState({
         country: 'Brazil',
         cities: [{
             cityName: "Rio de Janeiro",
@@ -142,7 +142,7 @@ function TripResults() {
             }]
         }
         ]
-    }])
+    })
 
 
     return (
@@ -160,10 +160,24 @@ function TripResults() {
                 bgcolor={colors.brandDarkGreen}
                 justifyContent="center"
             >
-                <GenerateForm />
+                <TripForm />
             </Box>
         //map on trip rsults
-            <TripSmallCard trips={trips} />
+            <Box
+                width='md'
+                my={4}
+                display="flex"
+                flexDirection="column"
+                alignItems="center"
+                gap={4}
+                p={2}
+                m={0}
+                // bgcolor={colors.brandDarkGreen}
+                justifyContent="center"
+            >
+
+                <TripSmallCard trips={trips} />
+            </Box>
         </>
     )
 }

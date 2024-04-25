@@ -13,28 +13,33 @@ import UserData from './contexts/UserData.js';
 import { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import TripResults from './components/pages/resultsPage/TripResults.jsx';
+import TripDataContext from './contexts/TripDataContext.js';
 
 
 function App() {
 
   const [userdata, setUserdata] = useState();
+  const [formData, setFormData] = useState(null)
 
 
   return (
     <>
       <UserData.Provider value={{ userdata, setUserdata }}>
-        <Router>
-          <NavBar />
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/about' element={<About />} />
-            {userdata && <Route path='/profile' element={<Profile />} />}
-            <Route path='/authors-choice' element={<AuthorsChoice />} />
-            <Route path='/googleMaps' element={<TestMaps />} />
-            <Route path='/results' element={<TripResults />} />
-            <Route path='/tripresults' element={<TripCard />} />
-          </Routes>
-        </Router>
+        <TripDataContext.Provider value={{ formData, setFormData }}>
+
+          <Router>
+            <NavBar />
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/about' element={<About />} />
+              {userdata && <Route path='/profile' element={<Profile />} />}
+              <Route path='/authors-choice' element={<AuthorsChoice />} />
+              <Route path='/googleMaps' element={<TestMaps />} />
+              <Route path='/results' element={<TripResults />} />
+              <Route path='/tripresults' element={<TripCard />} />
+            </Routes>
+          </Router>
+        </TripDataContext.Provider>
       </UserData.Provider>
       < ToastContainer />
     </>

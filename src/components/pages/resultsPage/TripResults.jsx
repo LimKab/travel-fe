@@ -1,10 +1,13 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import TripForm from "../../forms/TripForm"
 import TripSmallCard from "./TripSmallCard"
 import { Box } from "@mui/material"
 import { colors } from "../../../utils/colors"
+import TripDataContext from "../../../contexts/TripDataContext"
 
 function TripResults() {
+    const { formData } = useContext(TripDataContext)
+
     const [trips, setTrips] = useState({
         country: 'Brazil',
         cities: [{
@@ -160,7 +163,7 @@ function TripResults() {
                 bgcolor={colors.brandDarkGreen}
                 justifyContent="center"
             >
-                <TripForm />
+                <TripForm initialFormData={formData} />
             </Box>
         //map on trip rsults
             <Box

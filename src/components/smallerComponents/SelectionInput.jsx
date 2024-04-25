@@ -44,7 +44,10 @@ function SelectionInput({ control, name, arr, onError }) {
                                         <em>Surprise me</em>
                                     </MenuItem>
                                     {arr.map((item) => (
-                                        <MenuItem key={item.name} value={name === 'destination' ? `{name: ${item.name}, code: ${item.code}` : item.name}>
+                                        <MenuItem
+                                            key={item.name}
+                                            value={name === 'destination' ? JSON.stringify({ name: item.name, code: item.code }) : item.name}
+                                        >
                                             {item.name}
                                         </MenuItem>
                                     ))}

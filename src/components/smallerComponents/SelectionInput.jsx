@@ -40,9 +40,9 @@ function SelectionInput({ control, name, arr, onError }) {
                                         }
                                     }}
                                 >
-                                    <MenuItem value="Surprise me">
+                                    {/* <MenuItem value={null}>
                                         <em>Surprise me</em>
-                                    </MenuItem>
+                                    </MenuItem> */}
                                     {arr.map((item) => (
                                         <MenuItem
                                             key={item.name}

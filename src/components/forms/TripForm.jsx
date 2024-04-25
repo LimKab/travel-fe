@@ -1,29 +1,43 @@
 import { Button, ButtonGroup, Stack } from "@mui/material"
 import { colors } from "../../utils/colors"
 import { useForm } from "react-hook-form"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { countryOptions } from "../../utils/arrays/countries"
 import SelectionInput from "../smallerComponents/SelectionInput"
 import { budget, experience, season } from "../../utils/arrays/optionsArrays"
 import { useNavigate } from "react-router-dom"
+import axios from "axios"
 
 
-function GenerateForm() {
-    const { control, handleSubmit } = useForm({
+function TripForm({ initialFormData }) {
+    const { control, handleSubmit, reset } = useForm({
         defaultValues: {
             destination: '',
             experience: '',
             season: '',
-            budget: ''
+            budget: '',
+            ...initialFormData
         }
     })
+
+    useEffect(() => {
+        reset(initialFormData)
+    }, [initialFormData, reset])
+
     const [error, setError] = useState(null)
     const navigate = useNavigate()
 
-    function onSubmit(formData) {
+    async function onSubmit(formData) {
         console.log(formData);
-        //http://localhost:3001/gpt/post
+        try {
+            const response = await axios.post('http://localhost:3001/gpt/post', formData)
+            const results = response.data
+            console.log(results);
+        } catch (err) {
+            console.error(err);
+        }
         navigate('/results')
+
     }
 
     return (
@@ -44,4 +58,4 @@ function GenerateForm() {
         </form >
     )
 }
-export default GenerateForm
+export default TripForm

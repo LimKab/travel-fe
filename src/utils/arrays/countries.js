@@ -168,7 +168,6 @@ export const countryOptions = [
     { name: "Oman", code: "OM" },
     { name: "Pakistan", code: "PK" },
     { name: "Palau", code: "PW" },
-    { name: "Palestine, State of", code: "PS" },
     { name: "Panama", code: "PA" },
     { name: "Papua New Guinea", code: "PG" },
     { name: "Paraguay", code: "PY" },

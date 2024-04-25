@@ -29,23 +29,22 @@ function TripForm({ initialFormData }) {
     const [error, setError] = useState(null)
     const navigate = useNavigate()
     const { formData, setFormData } = useContext(TripDataContext)
-
-    useEffect(() => {
-        console.log("Updated formData:", formData);
-    }, [formData]);
+    // const { tripData, setTripData } = useContext(TripDataContext)
 
     async function onSubmit(data) {
         console.log(data);
+        setFormData(data)
         const { destination, ...restData } = data
         const jsonDestination = JSON.parse(destination)
-        setFormData({ destination: jsonDestination, ...restData })
-
+        const formDataWJson = { destination: jsonDestination, ...restData }
+        console.log(formDataWJson);
         // DO NOT USE THE POST FOR FUN - WE HAVE SAVED OBJECTS FOR THAT
         // try {
-        //     const response = await axios.post('http://localhost:3001/gpt/post', formData)
+        //     const response = await axios.post('http://localhost:3001/gpt/post', formDataWJson)
         //     const results = response.data
 
         //     console.log(results);
+        // setTripData(results)
         // } catch (err) {
         //     console.error(err);
         // }
@@ -70,7 +69,7 @@ function TripForm({ initialFormData }) {
                     disabled={isSubmitting}
                     type="submit"
                     sx={{ width: 310, background: colors.brandSand, '&:hover': { backgroundColor: colors.brandBrownish } }}>
-                    ai, generate me a trip
+                    {initialFormData ? 'change my trip' : 'ai, generate me a trip'}
                 </Button>
             </Stack>
         </form >

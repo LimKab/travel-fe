@@ -20,12 +20,13 @@ function App() {
 
   const [userdata, setUserdata] = useState();
   const [formData, setFormData] = useState(null)
+  const [tripData, setTripData] = useState(null)
 
 
   return (
     <>
       <UserData.Provider value={{ userdata, setUserdata }}>
-        <TripDataContext.Provider value={{ formData, setFormData }}>
+        <TripDataContext.Provider value={{ formData, setFormData, tripData, setTripData }}>
 
           <Router>
             <NavBar />

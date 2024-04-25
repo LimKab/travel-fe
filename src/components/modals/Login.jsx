@@ -2,19 +2,22 @@ import * as React from "react";
 import { useContext } from "react";
 
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import { Grid, Link } from "@mui/material";
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import LoginForm from "../forms/LoginForm";
 import UserData from "../../contexts/UserData";
 import { reqUserData } from "../../DB requests/UserData_Requests";
-
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { toastTopCenter } from "../../utils/toasts";
 
 const style = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
     position: "absolute",
     top: "50%",
     left: "50%",
@@ -28,9 +31,14 @@ const style = {
 
 const notify = () => toast.error('Wrong Email or Password', toastTopCenter);
 
-export default function Login({ showModal, setShowModal }) {
-    const handleClose = () => setShowModal(false);
+export default function Login({ showLogin, setShowLogin, setShowSignUp }) {
+    const handleClose = () => setShowLogin(false);
     const { setUserdata } = useContext(UserData)
+
+    const openSignup = () => {
+        setShowLogin(false);
+        setShowSignUp(true)
+    }
 
     const onSubmit = async (data) => {
         try {
@@ -48,17 +56,23 @@ export default function Login({ showModal, setShowModal }) {
     return (
         <div style={{ margin: "25%" }}>
             <Modal
-                open={showModal}
+                open={showLogin}
                 onClose={handleClose}
                 aria-labelledby="modal-login-title"
                 aria-describedby="modal-login-description"
             >
                 <Box sx={style}>
                     <Typography id="modal-login-title" variant="h6" component="h2">
-                        Login
+                        Sign in
                     </Typography>
                     <LoginForm onSubmit={onSubmit} />
-                    <Button onClick={handleClose}>Close window</Button>
+                    <Grid container justifyContent="flex-end">
+                        <Grid item>
+                            <Link href="#" variant="body2" onClick={openSignup}>
+                                Don't have an account? Sign Up
+                            </Link>
+                        </Grid>
+                    </Grid>
                 </Box>
             </Modal>
         </div>

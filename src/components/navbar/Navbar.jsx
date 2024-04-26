@@ -187,16 +187,16 @@ function NavBar() {
                                         <Typography textAlign="center" >Logout</Typography>
                                     </MenuItem>}
                                     {!userdata && <MenuItem key='Login' onClick={() => setShowLogin(true)}>
-                                        <Typography textAlign="center" >Login</Typography>
+                                        <Typography textAlign="center" >Sign in</Typography>
                                     </MenuItem>}
                                     {!userdata && <MenuItem key='SignUp' onClick={() => setShowSignUp(true)}>
-                                        <Typography textAlign="center" >SignUp</Typography>
+                                        <Typography textAlign="center" >Sign up</Typography>
                                     </MenuItem>}
                                 </Menu>
                             </Box>
                         </Toolbar>
-                        <Login showModal={showLogin} setShowModal={setShowLogin}></Login>
-                        <SignUp showModal={showSignUp} setShowModal={setShowSignUp}></SignUp>
+                        <Login showLogin={showLogin} setShowLogin={setShowLogin} setShowSignUp={setShowSignUp}></Login>
+                        <SignUp showSignUp={showSignUp} setShowSignUp={setShowSignUp} setShowLogin={setShowLogin}></SignUp>
                     </Container>
                 </AppBar>
             </div>

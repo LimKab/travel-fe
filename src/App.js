@@ -13,16 +13,24 @@ import { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import TripResults from './components/pages/resultsPage/TripResults.jsx';
 import TripModal from './contexts/TripModal.js';
+import TripDataContext from './contexts/TripDataContext.js';
+
+
 
 function App() {
 
   const [userdata, setUserdata] = useState();
   const [showTripModal, setShowTripModal] = useState(true)
+  const [formData, setFormData] = useState(null)
+  const [tripData, setTripData] = useState(null)
+
+
 
   return (
     <>
       <UserData.Provider value={{ userdata, setUserdata }}>
         <TripModal.Provider value={{ showTripModal, setShowTripModal }}>
+        <TripDataContext.Provider value={{ formData, setFormData, tripData, setTripData }}>
           <Router>
             <NavBar />
             <Routes>
@@ -36,6 +44,7 @@ function App() {
             </Routes>
           </Router>
         </TripModal.Provider>
+        </TripDataContext.Provider>
       </UserData.Provider>
       < ToastContainer />
     </>

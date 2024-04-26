@@ -1,15 +1,15 @@
 import { Box, Typography } from "@mui/material"
 import TravelVideo from "./TravelVideo"
 import { colors } from "../../../utils/colors"
-import GenerateForm from "../../forms/GenerateForm"
+import TripForm from "../../forms/TripForm"
 
 
 function Home() {
     return (
         <>
             <Box
-                height={250}
-                width='xl'
+                minHeight={250}
+                maxWidth={{ xs: '100%', sm: '100%', md: 'xl' }}
                 my={4}
                 display="flex"
                 flexDirection="column"
@@ -23,7 +23,7 @@ function Home() {
                 <Typography variant="h3" display="block" gutterBottom color={colors.brandWhite}>
                     Experience your AI generated trip!
                 </Typography>
-                <GenerateForm />
+                <TripForm />
             </Box>
             <TravelVideo />
         </>

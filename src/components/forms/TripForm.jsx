@@ -1,4 +1,6 @@
 import { Button, ButtonGroup, Stack } from "@mui/material"
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 import { colors } from "../../utils/colors"
 import { useForm } from "react-hook-form"
 import { useContext, useEffect, useState } from "react"
@@ -6,11 +8,14 @@ import { countryOptions } from "../../utils/arrays/countries"
 import SelectionInput from "../smallerComponents/SelectionInput"
 import { budget, experience, season } from "../../utils/arrays/optionsArrays"
 import { useNavigate } from "react-router-dom"
-// import axios from "axios"
+// import axios from "axios";
 import TripDataContext from "../../contexts/TripDataContext"
 
 
 function TripForm({ initialFormData }) {
+    const theme = useTheme()
+    const matches = useMediaQuery(theme.breakpoints.down('sm'))
+
     const { control, handleSubmit, reset, formState: { isSubmitting } } = useForm({
         defaultValues: {
             destination: '',
@@ -55,7 +60,12 @@ function TripForm({ initialFormData }) {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing={2} alignItems='center'>
-                <ButtonGroup variant="contained" disableElevation>
+                <ButtonGroup
+                    variant="contained"
+                    disableElevation
+                    orientation={matches ? 'vertical' : 'horizontal'}
+                    sx={{ width: matches ? '100%' : 'auto' }}
+                >
 
                     < SelectionInput control={control} name={'destination'} arr={countryOptions} onError={(newError) => setError(newError)} />
                     < SelectionInput control={control} name={'experience'} arr={experience} onError={(newError) => setError(newError)} />
@@ -68,7 +78,7 @@ function TripForm({ initialFormData }) {
                 <Button
                     disabled={isSubmitting}
                     type="submit"
-                    sx={{ width: 310, background: colors.brandSand, '&:hover': { backgroundColor: colors.brandBrownish } }}>
+                    sx={{ width: matches ? '100%' : 405, background: colors.brandSand, '&:hover': { backgroundColor: colors.brandBrownish } }}>
                     {initialFormData ? 'change my trip' : 'ai, generate me a trip'}
                 </Button>
             </Stack>

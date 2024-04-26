@@ -6,7 +6,7 @@ function SelectionInput({ control, name, arr, onError }) {
     return (
         <>
             <Button sx={{
-                background: colors.brandWhite, mx: 0.5, p: 0
+                background: colors.brandWhite, m: 0.3, p: 0
                 , '&:hover': {
                     backgroundColor: colors.brandGreen,
                     color: colors.brandWhite,
@@ -18,7 +18,7 @@ function SelectionInput({ control, name, arr, onError }) {
                     }
                 }
             }} >
-                <FormControl variant="filled" sx={{ minWidth: 150 }} size="small">
+                <FormControl variant="filled" sx={{ minWidth: 200, maxWidth: '100%' }} size="small">
                     <InputLabel >{name}</InputLabel>
                     <Controller
                         name={name}

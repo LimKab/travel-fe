@@ -10,6 +10,8 @@ import { budget, experience, season } from "../../utils/arrays/optionsArrays"
 import { useNavigate } from "react-router-dom"
 // import axios from "axios";
 import TripDataContext from "../../contexts/TripDataContext"
+import { toast } from "react-toastify";
+import { toastTopCenter } from "../../utils/toasts";
 
 
 function TripForm({ initialFormData }) {
@@ -30,11 +32,16 @@ function TripForm({ initialFormData }) {
         reset(initialFormData)
     }, [initialFormData, reset])
 
-
     const [error, setError] = useState(null)
     const navigate = useNavigate()
-    const { formData, setFormData } = useContext(TripDataContext)
-    // const { tripData, setTripData } = useContext(TripDataContext)
+    const {
+        // formData,
+        setFormData
+        , tripData
+        // , setTripData
+    } = useContext(TripDataContext)
+
+    const notify = (err) => toast.error(err, toastTopCenter)
 
     async function onSubmit(data) {
         console.log(data);
@@ -45,16 +52,17 @@ function TripForm({ initialFormData }) {
         console.log(formDataWJson);
         // DO NOT USE THE POST FOR FUN - WE HAVE SAVED OBJECTS FOR THAT
         // try {
-        //     const response = await axios.post('http://localhost:3001/gpt/post', formDataWJson)
-        //     const results = response.data
+        // const response = await axios.post('http://localhost:3001/gpt/post', formDataWJson)
+        // const results = response.data
+        // console.log(results);
+        // setTripData(results.response)
 
-        //     console.log(results);
-        // setTripData(results)
+        navigate('/results')
+        console.log(tripData.response);
         // } catch (err) {
         //     console.error(err);
+        //     notify(err)
         // }
-        navigate('/results')
-
     }
 
     return (

@@ -1,4 +1,4 @@
-const thailand = {
+export const thailand = {
     "response": [
         {
             "cityName": "Bangkok",

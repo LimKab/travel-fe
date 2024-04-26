@@ -64,7 +64,6 @@ function TripForm({ initialFormData }) {
                     variant="contained"
                     disableElevation
                     orientation={matches ? 'vertical' : 'horizontal'}
-                    sx={{ width: matches ? '100%' : 'auto' }}
                 >
 
                     < SelectionInput control={control} name={'destination'} arr={countryOptions} onError={(newError) => setError(newError)} />

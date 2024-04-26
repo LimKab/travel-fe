@@ -18,7 +18,7 @@ function SelectionInput({ control, name, arr, onError }) {
                     }
                 }
             }} >
-                <FormControl variant="filled" sx={{ minWidth: 200, maxWidth: '100%' }} size="small">
+                <FormControl variant="filled" sx={{ width: 210, maxWidth: 250 }} size="small">
                     <InputLabel >{name}</InputLabel>
                     <Controller
                         name={name}

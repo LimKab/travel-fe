@@ -3,11 +3,11 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import SlidingNameImage from '../../smallerComponents/SlidingNameImage';
 import { Button, Stack } from '@mui/material';
 import { useContext } from 'react';
 import TripModal from '../../../contexts/TripModal';
 import TripCard from '../../../TripResults/TripCard';
+import SlidingShowcase from '../../smallerComponents/SlidingShowcase';
 
 function TripSmallCard({ item }) {
     const { showTripModal, setShowTripModal } = useContext(TripModal)
@@ -26,17 +26,21 @@ function TripSmallCard({ item }) {
 
                     <Box sx={{ display: 'flex', width: { xs: '50vh', sm: '100vh' } }}>
                         <Stack justifyContent='space-evenly' sx={{ width: '100%', flexDirection: { xs: 'column', sm: 'row' } }}>
-                            <SlidingNameImage image={item.topAttractions[0].image} name={item.topAttractions[0].name} url={item.topAttractions[0].website} />
-                            <SlidingNameImage image={item.topHotels[0].image} name={item.topHotels[0].name} url={item.topHotels[0].website} />
-                            <SlidingNameImage image={item.topRestaurants[0].image} name={item.topRestaurants[0].name} url={item.topRestaurants[0].website} />
+                            <SlidingShowcase places={item.topAttractions} />
+                            <SlidingShowcase places={item.topHotels} />
+                            <SlidingShowcase places={item.topRestaurants} />
                         </Stack>
                     </Box>
 
                     <Box sx={{ display: 'flex', justifyContent: { xs: 'center', sm: 'flex-end' }, mb: 2, mr: { sm: '26px' } }}>
-                        <Button variant="contained" disableElevation sx={{ width: 200, borderRadius: '8px' }} onClick={() => setShowTripModal(true)}>see more</Button>
+                        <Button variant="contained" disableElevation sx={{ width: 200, borderRadius: '8px' }} onClick={() => {
+                            setShowTripModal(true)
+                            console.log(item)
+                        }}>see more</Button>
                     </Box>
                 </Box>
             </Card >
+
             {showTripModal && <TripCard item={item} />}
         </>
     )

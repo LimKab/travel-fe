@@ -14,6 +14,7 @@ function SlidingNameImage({ image, name, url }) {
                         rel="noopener noreferrer"
                         sx={{ width: 200, bgcolor: '#BFBFBF' }}
                     />
+
                     <a href={url} target="_blank" rel="noopener noreferrer">
                         <CardMedia
                             component="img"

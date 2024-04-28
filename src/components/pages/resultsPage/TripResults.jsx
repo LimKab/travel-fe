@@ -36,7 +36,6 @@ function TripResults() {
                 m='2rem auto'
             >
                 {tripData && tripData.map((item) => <TripSmallCard key={item.cityInfo[0].cityCode} item={item} />)}
-
             </Box >
         </>
     )

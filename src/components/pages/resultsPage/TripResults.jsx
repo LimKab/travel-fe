@@ -30,7 +30,6 @@ function TripResults() {
 
             <Box
                 width={{ xs: '90%', sm: '100vh' }}
-                my={4}
                 display="flex"
                 flexDirection="column"
                 gap={4}

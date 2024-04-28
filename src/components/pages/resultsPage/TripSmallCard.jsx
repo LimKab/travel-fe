@@ -19,14 +19,14 @@ function TripSmallCard({ item }) {
                             {item.cityName}
                         </Typography>
                     </CardContent>
-                    <Box sx={{ display: 'flex', alignItems: 'center', width: { xs: '50vh', sm: '100vh' } }}>
-                        <Stack spacing={2} alignItems='center' justifyContent='space-evenly' flexDirection={{ xs: 'column', sm: 'row' }} sx={{ width: '100%' }}>
+                    <Box sx={{ display: 'flex', width: { xs: '50vh', sm: '100vh' } }}>
+                        <Stack justifyContent='space-evenly' sx={{ width: '100%', flexDirection: { xs: 'column', sm: 'row' } }}>
                             <SlidingNameImage image={item.topAttractions[0].image} name={item.topAttractions[0].name} url={item.topAttractions[0].website} />
                             <SlidingNameImage image={item.topHotels[0].image} name={item.topHotels[0].name} url={item.topHotels[0].website} />
                             <SlidingNameImage image={item.topRestaurants[0].image} name={item.topRestaurants[0].name} url={item.topRestaurants[0].website} />
                         </Stack>
                     </Box>
-                    <Box sx={{ display: 'flex', justifyContent: { xs: 'center', sm: 'flex-end' }, m: 2, mr: '18px' }}>
+                    <Box sx={{ display: 'flex', justifyContent: { xs: 'center', sm: 'flex-end' }, mb: 2, mr: { sm: '26px' } }}>
                         <Button variant="contained" disableElevation sx={{ width: 200, borderRadius: '8px' }}>see more</Button>
                     </Box>
                 </Box>

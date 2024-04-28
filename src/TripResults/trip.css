@@ -8,12 +8,15 @@ h2 {
     color: #454553;
     font-size: 25px;
     text-align: left;
+    margin-left: 1rem;
 }
 
 .chip {
-    height: 1.35rem !important;
-    font-size: 13px !important;
-    margin-right: 1rem;
+    height: 1.5rem !important;
+    min-width: 5rem;
+    font-weight: 100 !important;
+    font-size: 15px !important;
+    margin-right: 0.5rem;
     color: white !important;
     background-color: #7A7E6D !important;
 }
@@ -26,6 +29,10 @@ h2 {
 
 .filters {
     margin-top: 2rem;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    width: 18rem;
 }
 
 .inner-left-container,
@@ -38,6 +45,7 @@ h2 {
 .inner-left-container {
     width: 52rem !important;
     padding: 1rem;
+    text-align: left;
 }
 
 .inner-right-container {
@@ -54,41 +62,32 @@ h2 {
 }
 
 .sliding-place-name {
-    position: relative;
-    right: 32%;
-    bottom: 8%;
     color: #7A7E6D !important;
     font-weight: 700;
     font-size: 20px !important
 }
 
+.average-rating {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: right;
+
+}
+
 .average-rating-stars,
 .average-rating-number {
     color: #043F33 !important;
-    position: relative;
-}
-
-.average-rating-stars {
-    bottom: 3%;
-    left: 27%;
 }
 
 .average-rating-number {
-    text-align: right;
-    bottom: 42%;
     font-size: 18px;
+    margin-top: 0
 }
 
 .sliding-place-details {
-    position: relative;
-    bottom: 40%;
     text-align: left;
-}
-
-
-
-.arrow-down:hover {
-    cursor: pointer
+    margin-left: 0.5rem;
+    margin-top: 0
 }
 
 .trip-card-buttons {
@@ -112,7 +111,7 @@ h2 {
     display: flex;
     flex-flow: row nowrap;
     position: relative;
-    bottom: 10%;
+    top: 18%;
     align-items: center;
     width: 14%;
     height: 10%;
@@ -130,6 +129,11 @@ h2 {
 
 .tooltip {
     position: relative;
-    bottom: 22%;
-    left: 49%
+    left: 95%;
+}
+
+.top-row {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
 }

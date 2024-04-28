@@ -20,31 +20,32 @@ import TripDataContext from './contexts/TripDataContext.js';
 function App() {
 
   const [userdata, setUserdata] = useState();
-  const [showTripModal, setShowTripModal] = useState(true)
+  const [showTripModal, setShowTripModal] = useState(false)
+  const [tripToSeeMore, setTripToSeeMore] = useState(null)
   const [formData, setFormData] = useState(null)
   const [tripData, setTripData] = useState(null)
-
+  const [showTripDialog, setShowTripDialog] = useState(false)
 
 
   return (
     <>
       <UserData.Provider value={{ userdata, setUserdata }}>
-        <TripModal.Provider value={{ showTripModal, setShowTripModal }}>
-        <TripDataContext.Provider value={{ formData, setFormData, tripData, setTripData }}>
-          <Router>
-            <NavBar />
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/about' element={<About />} />
-              {userdata && <Route path='/profile' element={<Profile />} />}
-              <Route path='/authors-choice' element={<AuthorsChoice />} />
-              <Route path='/googleMaps' element={<TestMaps />} />
-              <Route path='/results' element={<TripResults />} />
-              <Route path='/tripresults' element={<TripCard />} />
-            </Routes>
-          </Router>
+        <TripModal.Provider value={{ showTripModal, setShowTripModal, showTripDialog, setShowTripDialog, tripToSeeMore, setTripToSeeMore }}>
+          <TripDataContext.Provider value={{ formData, setFormData, tripData, setTripData }}>
+            <Router>
+              <NavBar />
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/about' element={<About />} />
+                {userdata && <Route path='/profile' element={<Profile />} />}
+                <Route path='/authors-choice' element={<AuthorsChoice />} />
+                <Route path='/googleMaps' element={<TestMaps />} />
+                <Route path='/results' element={<TripResults />} />
+                <Route path='/tripresults' element={<TripCard />} />
+              </Routes>
+            </Router>
+          </TripDataContext.Provider>
         </TripModal.Provider>
-        </TripDataContext.Provider>
       </UserData.Provider>
       < ToastContainer />
     </>

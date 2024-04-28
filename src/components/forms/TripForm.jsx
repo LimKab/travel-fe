@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom"
 import TripDataContext from "../../contexts/TripDataContext"
 import { toast } from "react-toastify";
 import { toastTopCenter } from "../../utils/toasts";
+import { thailand } from '../../utils/data/thailand2';
 
 
 function TripForm({ initialFormData }) {
@@ -38,7 +39,7 @@ function TripForm({ initialFormData }) {
         // formData,
         setFormData
         , tripData
-        // , setTripData
+        , setTripData
     } = useContext(TripDataContext)
 
     const notify = (err) => toast.error(err, toastTopCenter)
@@ -56,9 +57,9 @@ function TripForm({ initialFormData }) {
         // const results = response.data
         // console.log(results);
         // setTripData(results.response)
-
+        setTripData(thailand.response)
         navigate('/results')
-        console.log(tripData.response);
+        // console.log(tripData.response);
         // } catch (err) {
         //     console.error(err);
         //     notify(err)
@@ -85,7 +86,7 @@ function TripForm({ initialFormData }) {
                 <Button
                     disabled={isSubmitting}
                     type="submit"
-                    sx={{ width: matches ? '100%' : 405, background: colors.brandSand, '&:hover': { backgroundColor: colors.brandBrownish } }}>
+                    sx={{ width: matches ? '100%' : 405, background: colors.brandGreen, '&:hover': { backgroundColor: colors.brandSand }, borderRadius: '8px' }}>
                     {initialFormData ? 'change my trip' : 'ai, generate me a trip'}
                 </Button>
             </Stack>

@@ -43,8 +43,8 @@ function App() {
               <Route path='/tripresults' element={<TripCard />} />
             </Routes>
           </Router>
-        </TripModal.Provider>
         </TripDataContext.Provider>
+        </TripModal.Provider>
       </UserData.Provider>
       < ToastContainer />
     </>

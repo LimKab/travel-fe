@@ -1,6 +1,5 @@
 .outer-container {
     width: 683px;
-    height: 692px;
     background-color: #DDD8CB;
     border-radius: 10px;
 }
@@ -33,7 +32,7 @@ h2 {
 .inner-right-container {
     background-color: white;
     border-radius: 10px;
-    height: 187px;
+    max-height: 187px;
 }
 
 .inner-left-container {
@@ -42,11 +41,95 @@ h2 {
 }
 
 .inner-right-container {
-    width: 17rem !important;
+    max-width: 17rem !important;
+    background-position: center;
+    background-size: cover;
 }
 
 .inner-containers {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-evenly;
+    margin-bottom: 1.5rem;
+}
+
+.sliding-place-name {
+    position: relative;
+    right: 32%;
+    bottom: 8%;
+    color: #7A7E6D !important;
+    font-weight: 700;
+    font-size: 20px !important
+}
+
+.average-rating-stars,
+.average-rating-number {
+    color: #043F33 !important;
+    position: relative;
+}
+
+.average-rating-stars {
+    bottom: 3%;
+    left: 27%;
+}
+
+.average-rating-number {
+    text-align: right;
+    bottom: 42%;
+    font-size: 18px;
+}
+
+.sliding-place-details {
+    position: relative;
+    bottom: 40%;
+    text-align: left;
+}
+
+
+
+.arrow-down:hover {
+    cursor: pointer
+}
+
+.trip-card-buttons {
+    margin-left: 1rem !important;
+    position: relative;
+    left: 38%;
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.trip-modal {
+    transform: 'translate(-50%, -50%)';
+    overflow-y: auto;
+}
+
+.carousel {
+    margin-bottom: 1.5rem
+}
+
+.see-reviews {
+    display: flex;
+    flex-flow: row nowrap;
+    position: relative;
+    bottom: 10%;
+    align-items: center;
+    width: 14%;
+    height: 10%;
+}
+
+.see-reviews:hover {
+    cursor: pointer
+}
+
+.reviews-icon {
+    position: relative;
+    top: 18%;
+    left: 5%;
+}
+
+.tooltip {
+    position: relative;
+    bottom: 22%;
+    left: 49%
 }

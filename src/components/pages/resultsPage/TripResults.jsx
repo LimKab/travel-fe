@@ -1,19 +1,19 @@
 import { useContext } from "react"
 import TripForm from "../../forms/TripForm"
-// import TripSmallCard from "./TripSmallCard"
+import TripSmallCard from './TripSmallCard'
 import { Box } from "@mui/material"
 import { colors } from "../../../utils/colors"
 import TripDataContext from "../../../contexts/TripDataContext"
 import DownloadJsonButton from "../../../utils/downloadData"
 
 function TripResults() {
-    const { formData } = useContext(TripDataContext)
+    const { formData, tripData } = useContext(TripDataContext)
 
     return (
         <>
             <Box
-                height={100}
-                width='xl'
+                minHeight={100}
+                maxWidth={{ xs: '100%', sm: '100%', md: 'xl' }}
                 my={4}
                 display="flex"
                 flexDirection="column"
@@ -26,22 +26,19 @@ function TripResults() {
             >
                 <TripForm initialFormData={formData} />
             </Box>
-        //map on trip rsults
-            <DownloadJsonButton />
+            {/* <DownloadJsonButton /> */}
+
             <Box
-                width='md'
+                width={{ xs: '90%', sm: '100vh' }}
                 my={4}
                 display="flex"
                 flexDirection="column"
-                alignItems="center"
                 gap={4}
-                p={2}
-                m={0}
-                // bgcolor={colors.brandDarkGreen}
-                justifyContent="center"
+                m='2rem auto'
             >
-                {/* <TripSmallCard /> */}
-            </Box>
+                {tripData && tripData.map((item) => <TripSmallCard key={item.cityInfo[0].cityCode} item={item} />)}
+
+            </Box >
         </>
     )
 }

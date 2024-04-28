@@ -5,8 +5,12 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import SlidingNameImage from '../../smallerComponents/SlidingNameImage';
 import { Button, Stack } from '@mui/material';
+import { useContext } from 'react';
+import TripModal from '../../../contexts/TripModal';
+import TripCard from '../../../TripResults/TripCard';
 
 function TripSmallCard({ item }) {
+    const { showTripModal, setShowTripModal } = useContext(TripModal)
     return (
         <>
             <Card sx={{ display: 'flex', width: '100%', justifyContent: "center", alignItems: "center", borderRadius: '8px' }}>
@@ -29,10 +33,11 @@ function TripSmallCard({ item }) {
                     </Box>
 
                     <Box sx={{ display: 'flex', justifyContent: { xs: 'center', sm: 'flex-end' }, mb: 2, mr: { sm: '26px' } }}>
-                        <Button variant="contained" disableElevation sx={{ width: 200, borderRadius: '8px' }}>see more</Button>
+                        <Button variant="contained" disableElevation sx={{ width: 200, borderRadius: '8px' }} onClick={() => setShowTripModal(true)}>see more</Button>
                     </Box>
                 </Box>
             </Card >
+            {showTripModal && <TripCard item={item} />}
         </>
     )
 }

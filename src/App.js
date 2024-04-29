@@ -10,10 +10,11 @@ import TripCard from './TripResults/TripCard';
 // import TestMaps from './components/googleMaps/TestMap.jsx';
 import TestMaps from './components/googleMaps/TestMap.jsx';
 import UserData from './contexts/UserData.js';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import TripResults from './components/pages/resultsPage/TripResults.jsx';
 import TripDataContext from './contexts/TripDataContext.js';
+import { loadStoredUserData } from './utils/utiliry.js';
 
 
 function App() {
@@ -21,12 +22,18 @@ function App() {
   const [userdata, setUserdata] = useState();
   const [formData, setFormData] = useState(null)
 
+  const handleLoadupSettings = () => {
+    setUserdata(loadStoredUserData())
+  }
+
+  useEffect(() => {
+    handleLoadupSettings()
+  }, [])
 
   return (
     <>
       <UserData.Provider value={{ userdata, setUserdata }}>
         <TripDataContext.Provider value={{ formData, setFormData }}>
-
           <Router>
             <NavBar />
             <Routes>

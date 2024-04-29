@@ -36,8 +36,8 @@ export default function Login({ showModal, setShowModal }) {
         try {
             const { user, token } = await reqUserData(data)
             setUserdata(user)
-            sessionStorage.setItem('userdata', JSON.stringify(user));
-            sessionStorage.setItem('token', JSON.stringify(token));
+            localStorage.setItem('userdata', JSON.stringify(user));
+            localStorage.setItem('token', JSON.stringify(token));
             handleClose()
         } catch (error) {
             notify()

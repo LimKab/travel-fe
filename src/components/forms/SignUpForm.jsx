@@ -29,8 +29,8 @@ export default function SignUpForm({ onSubmit }) {
             <input {...register('password', {
                 required: "Password is required",
                 minLength: {
-                    value: 10,
-                    message: "Password must be at leat 10 characters"
+                    value: 8,
+                    message: "Password must be at leat 8 characters"
                 }
             })}
                 type='password'

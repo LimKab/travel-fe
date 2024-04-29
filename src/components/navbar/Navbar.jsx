@@ -38,7 +38,7 @@ function NavBar() {
 
     function logout() {
         setUserdata()
-        sessionStorage.clear()
+        localStorage.clear()
     }
 
     const handleOpenNavMenu = (event) => {

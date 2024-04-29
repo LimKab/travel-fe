@@ -14,7 +14,7 @@ import { ToastContainer } from 'react-toastify';
 import TripResults from './components/pages/resultsPage/TripResults.jsx';
 import TripModal from './contexts/TripModal.js';
 import TripDataContext from './contexts/TripDataContext.js';
-import { loadStoredUserData } from './utils/utiliry.js';
+import { loadStoredUserData } from './utils/utility.js';
 
 
 

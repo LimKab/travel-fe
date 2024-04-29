@@ -38,7 +38,7 @@ function NavBar() {
 
     function logout() {
         setUserdata()
-        sessionStorage.clear()
+        localStorage.clear()
     }
 
     const handleOpenNavMenu = (event) => {
@@ -156,7 +156,7 @@ function NavBar() {
                             <Box sx={{ flexGrow: 0 }}>
                                 <Tooltip title="Open settings">
                                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                        <Avatar alt={userdata?.username || "Guest"} src="/static/images/avatar/2.jpg" />
+                                        <Avatar alt={userdata?.username.toUpperCase() || "Guest"} src="/static/images/avatar/2.jpg" />
                                     </IconButton>
                                 </Tooltip>
                                 <Menu

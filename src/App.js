@@ -9,11 +9,12 @@ import TripCard from './TripResults/TripCard';
 // import TestMaps from './components/googleMaps/TestMap.jsx';
 import TestMaps from './components/googleMaps/TestMap.jsx';
 import UserData from './contexts/UserData.js';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import TripResults from './components/pages/resultsPage/TripResults.jsx';
 import TripModal from './contexts/TripModal.js';
 import TripDataContext from './contexts/TripDataContext.js';
+import { loadStoredUserData } from './utils/utiliry.js';
 
 
 
@@ -25,6 +26,13 @@ function App() {
   const [tripData, setTripData] = useState(null)
 
 
+  const handleLoadupSettings = () => {
+    setUserdata(loadStoredUserData())
+  }
+
+  useEffect(() => {
+    handleLoadupSettings()
+  }, [])
 
   return (
     <>
@@ -45,7 +53,7 @@ function App() {
             </Router>
           </TripDataContext.Provider>
         </TripModal.Provider>
-      </UserData.Provider>
+      </UserData.Provider >
       < ToastContainer />
     </>
   );

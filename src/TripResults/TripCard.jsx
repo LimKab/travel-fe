@@ -8,16 +8,16 @@ import Rating from '@mui/material/Rating';
 import Modal from '@mui/material/Modal';
 import TripModal from '../contexts/TripModal';
 import { useContext, useState } from 'react';
-import Comments from './Comments';
+import Comments from './Comments'
 import RateReviewOutlinedIcon from '@mui/icons-material/RateReviewOutlined';
 import ReviewsIcon from '@mui/icons-material/Reviews';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import { useNavigate } from 'react-router-dom';
 
-function TripCard() {
+function TripCard({ item }) {
 
-    const { showTripModal } = useContext(TripModal)
+    const { showTripModal, setShowTripModal } = useContext(TripModal)
     const [showHotelComments, setShowHotelComments] = useState(false)
     const [showRestaurantComments, setShowRestaurantComments] = useState(false)
     const [showAttractionComments, setShowAttractionComments] = useState(false)
@@ -33,7 +33,7 @@ function TripCard() {
             const response = await fetch(``, {
                 method: 'POST',
                 headers: { 'content-type': 'application/json' },
-                body: JSON.stringify(trip)
+                // body: JSON.stringify(trip)
             })
             const data = await response.json()
             console.log(data)
@@ -141,7 +141,7 @@ function TripCard() {
                 </Carousel>
                 {showAttractionComments && <Comments />}
 
-                <Button variant="contained" disableElevation className='trip-card-buttons' onClick={() => navigate('/results')}>Back</Button>
+                <Button variant="contained" disableElevation className='trip-card-buttons' onClick={() => setShowTripModal(false)}>Back</Button>
                 <Button variant="contained" disableElevation className='trip-card-buttons' onClick={handleSave}>Save this trip</Button>
             </Container>
         </Modal>

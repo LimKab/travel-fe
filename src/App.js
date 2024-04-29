@@ -20,7 +20,7 @@ import TripDataContext from './contexts/TripDataContext.js';
 function App() {
 
   const [userdata, setUserdata] = useState();
-  const [showTripModal, setShowTripModal] = useState(true)
+  const [showTripModal, setShowTripModal] = useState(false)
   const [formData, setFormData] = useState(null)
   const [tripData, setTripData] = useState(null)
 
@@ -30,20 +30,20 @@ function App() {
     <>
       <UserData.Provider value={{ userdata, setUserdata }}>
         <TripModal.Provider value={{ showTripModal, setShowTripModal }}>
-        <TripDataContext.Provider value={{ formData, setFormData, tripData, setTripData }}>
-          <Router>
-            <NavBar />
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/about' element={<About />} />
-              {userdata && <Route path='/profile' element={<Profile />} />}
-              <Route path='/authors-choice' element={<AuthorsChoice />} />
-              <Route path='/googleMaps' element={<TestMaps />} />
-              <Route path='/results' element={<TripResults />} />
-              <Route path='/tripresults' element={<TripCard />} />
-            </Routes>
-          </Router>
-        </TripDataContext.Provider>
+          <TripDataContext.Provider value={{ formData, setFormData, tripData, setTripData }}>
+            <Router>
+              <NavBar />
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/about' element={<About />} />
+                {userdata && <Route path='/profile' element={<Profile />} />}
+                <Route path='/authors-choice' element={<AuthorsChoice />} />
+                <Route path='/googleMaps' element={<TestMaps />} />
+                <Route path='/results' element={<TripResults />} />
+                <Route path='/tripresults' element={<TripCard />} />
+              </Routes>
+            </Router>
+          </TripDataContext.Provider>
         </TripModal.Provider>
       </UserData.Provider>
       < ToastContainer />

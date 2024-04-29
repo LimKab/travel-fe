@@ -60,7 +60,7 @@ function NavBar() {
         <>
             <div >
                 <AppBar position="static" sx={{ bgcolor: 'primary', minHeight: 56, height: 56 }}>
-                    <Container maxWidth="xl">
+                    <Container maxWidth="100%">
                         <Toolbar disableGutters sx={{ minHeight: '56px !important', height: 56 }}>
                             <SvgIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}>
                                 <MdOutlineTravelExplore size="24px" />
@@ -126,8 +126,8 @@ function NavBar() {
                             <Typography
                                 variant="h5"
                                 noWrap
-                                component="a"
-                                href="#app-bar-with-responsive-menu"
+                                component={Link}
+                                to='./'
                                 sx={{
                                     mr: 2,
                                     display: { xs: 'flex', md: 'none' },

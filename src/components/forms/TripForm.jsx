@@ -1,16 +1,25 @@
 import { Button, ButtonGroup, Stack } from "@mui/material"
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 import { colors } from "../../utils/colors"
 import { useForm } from "react-hook-form"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { countryOptions } from "../../utils/arrays/countries"
 import SelectionInput from "../smallerComponents/SelectionInput"
 import { budget, experience, season } from "../../utils/arrays/optionsArrays"
 import { useNavigate } from "react-router-dom"
-import axios from "axios"
+// import axios from "axios";
+import TripDataContext from "../../contexts/TripDataContext"
+import { toast } from "react-toastify";
+import { toastTopCenter } from "../../utils/toasts";
+import { thailand } from '../../utils/data/thailand2';
 
 
 function TripForm({ initialFormData }) {
-    const { control, handleSubmit, reset } = useForm({
+    const theme = useTheme()
+    const matches = useMediaQuery(theme.breakpoints.down('sm'))
+
+    const { control, handleSubmit, reset, formState: { isSubmitting } } = useForm({
         defaultValues: {
             destination: '',
             experience: '',
@@ -26,24 +35,45 @@ function TripForm({ initialFormData }) {
 
     const [error, setError] = useState(null)
     const navigate = useNavigate()
+    const {
+        // formData,
+        setFormData
+        , tripData
+        , setTripData
+    } = useContext(TripDataContext)
 
-    async function onSubmit(formData) {
-        console.log(formData);
-        try {
-            const response = await axios.post('http://localhost:3001/gpt/post', formData)
-            const results = response.data
-            console.log(results);
-        } catch (err) {
-            console.error(err);
-        }
+    const notify = (err) => toast.error(err, toastTopCenter)
+
+    async function onSubmit(data) {
+        console.log(data);
+        setFormData(data)
+        const { destination, ...restData } = data
+        const jsonDestination = JSON.parse(destination)
+        const formDataWJson = { destination: jsonDestination, ...restData }
+        console.log(formDataWJson);
+        // DO NOT USE THE POST FOR FUN - WE HAVE SAVED OBJECTS FOR THAT
+        // try {
+        // const response = await axios.post('http://localhost:3001/gpt/post', formDataWJson)
+        // const results = response.data
+        // console.log(results);
+        // setTripData(results.response)
+        setTripData(thailand.response)
         navigate('/results')
-
+        // console.log(tripData.response);
+        // } catch (err) {
+        //     console.error(err);
+        //     notify(err)
+        // }
     }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing={2} alignItems='center'>
-                <ButtonGroup variant="contained" disableElevation>
+                <ButtonGroup
+                    variant="contained"
+                    disableElevation
+                    orientation={matches ? 'vertical' : 'horizontal'}
+                >
 
                     < SelectionInput control={control} name={'destination'} arr={countryOptions} onError={(newError) => setError(newError)} />
                     < SelectionInput control={control} name={'experience'} arr={experience} onError={(newError) => setError(newError)} />
@@ -53,7 +83,12 @@ function TripForm({ initialFormData }) {
                 </ButtonGroup>
                 {error && <p >{error.message}</p>}
 
-                <Button type="submit" sx={{ width: 310, background: colors.brandSand, '&:hover': { backgroundColor: colors.brandBrownish } }}>ai generate me a trip</Button>
+                <Button
+                    disabled={isSubmitting}
+                    type="submit"
+                    sx={{ width: matches ? '100%' : 405, background: colors.brandGreen, '&:hover': { backgroundColor: colors.brandSand }, borderRadius: '8px' }}>
+                    {initialFormData ? 'change my trip' : 'ai, generate me a trip'}
+                </Button>
             </Stack>
         </form >
     )

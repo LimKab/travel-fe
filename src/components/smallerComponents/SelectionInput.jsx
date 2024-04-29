@@ -6,7 +6,7 @@ function SelectionInput({ control, name, arr, onError }) {
     return (
         <>
             <Button sx={{
-                background: colors.brandWhite, mx: 0.5, p: 0
+                background: colors.brandWhite, m: 0.3, p: 0
                 , '&:hover': {
                     backgroundColor: colors.brandGreen,
                     color: colors.brandWhite,
@@ -18,7 +18,7 @@ function SelectionInput({ control, name, arr, onError }) {
                     }
                 }
             }} >
-                <FormControl variant="filled" sx={{ minWidth: 150 }} size="small">
+                <FormControl variant="filled" sx={{ width: 210, maxWidth: 250 }} size="small">
                     <InputLabel >{name}</InputLabel>
                     <Controller
                         name={name}
@@ -40,11 +40,14 @@ function SelectionInput({ control, name, arr, onError }) {
                                         }
                                     }}
                                 >
-                                    <MenuItem value="Surprise me">
+                                    {/* <MenuItem value={null}>
                                         <em>Surprise me</em>
-                                    </MenuItem>
+                                    </MenuItem> */}
                                     {arr.map((item) => (
-                                        <MenuItem key={item.name} value={name === 'destination' ? `{name: ${item.name}, code: ${item.code}` : item.name}>
+                                        <MenuItem
+                                            key={item.name}
+                                            value={name === 'destination' ? JSON.stringify({ name: item.name, code: item.code }) : item.name}
+                                        >
                                             {item.name}
                                         </MenuItem>
                                     ))}

@@ -8,7 +8,7 @@ import Rating from '@mui/material/Rating';
 import Modal from '@mui/material/Modal';
 import TripModal from '../contexts/TripModal';
 import { useContext, useState } from 'react';
-import Comments from './comments'
+import Comments from './Comments'
 import RateReviewOutlinedIcon from '@mui/icons-material/RateReviewOutlined';
 import ReviewsIcon from '@mui/icons-material/Reviews';
 import Tooltip from '@mui/material/Tooltip';

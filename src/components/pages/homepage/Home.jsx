@@ -9,7 +9,7 @@ function Home() {
         <>
             <Box
                 minHeight={250}
-                maxWidth={{ xs: '100%', sm: '100%', md: 'xl' }}
+                maxWidth='100%'
                 my={4}
                 display="flex"
                 flexDirection="column"

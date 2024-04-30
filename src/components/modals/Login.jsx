@@ -62,11 +62,11 @@ export default function Login({ showLogin, setShowLogin, setShowSignUp }) {
                 aria-describedby="modal-login-description"
             >
                 <Box sx={style}>
-                    <Typography id="modal-login-title" variant="h6" component="h2">
+                    <Typography id="modal-login-title" variant="h6" component="h2" mb={2}>
                         Sign in
                     </Typography>
                     <LoginForm onSubmit={onSubmit} />
-                    <Grid container justifyContent="flex-end">
+                    <Grid container justifyContent="flex-start" ml={2}>
                         <Grid item>
                             <Link href="#" variant="body2" onClick={openSignup}>
                                 Don't have an account? Sign Up

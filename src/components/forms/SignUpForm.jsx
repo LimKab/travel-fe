@@ -1,5 +1,5 @@
 
-import { Box, Button, Container, Grid } from '@mui/material';
+import { Box, Button, Container, Grid, TextField } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
 export default function SignUpForm({ onSubmit }) {
@@ -25,42 +25,46 @@ export default function SignUpForm({ onSubmit }) {
                 <Box component="form" onSubmit={handleSubmit(onSubmit)}>
                     <Grid container spacing={2}>
                         <Grid item xs={12}>
-                            <input {...register('username', {
-                                required: "username is required",
-                            })}
+                            <TextField id="username" label="Username" variant="outlined" size="small"
+                                {...register('username', {
+                                    required: "username is required",
+                                })}
                                 type='string'
                                 placeholder='Username'
                             />
                             {errors.email && (<p>{`${errors.email.message}`}</p>)}
                         </Grid>
                         <Grid item xs={12}>
-                            <input {...register('email', {
-                                required: "Email is required",
-                            })}
+                            <TextField id="email" label="Email" variant="outlined" size="small"
+                                {...register('email', {
+                                    required: "Email is required",
+                                })}
                                 type='email'
                                 placeholder='Email'
                             />
                             {errors.email && (<p>{`${errors.email.message}`}</p>)}
                         </Grid>
                         <Grid item xs={12}>
-                            <input {...register('password', {
-                                required: "Password is required",
-                                minLength: {
-                                    value: 8,
-                                    message: "Password must be at leat 8 characters"
-                                }
-                            })}
+                            <TextField id="password" label="Password" variant="outlined" size="small"
+                                {...register('password', {
+                                    required: "Password is required",
+                                    minLength: {
+                                        value: 8,
+                                        message: "Password must be at leat 8 characters"
+                                    }
+                                })}
                                 type='password'
                                 placeholder='Password'
                             />
                             {errors.password && (<p>{`${errors.password.message}`}</p>)}
                         </Grid>
                         <Grid item xs={12}>
-                            <input {...register('confirmPassword', {
-                                required: "Confirm password is required",
-                                validate: (value) =>
-                                    value === getValues("password") || "Passwords must match"
-                            })}
+                            <TextField id="confirmPassword" label="Confirm password" variant="outlined" size="small"
+                                {...register('confirmPassword', {
+                                    required: "Confirm password is required",
+                                    validate: (value) =>
+                                        value === getValues("password") || "Passwords must match"
+                                })}
                                 type="password"
                                 placeholder='Confirm password'
                             />

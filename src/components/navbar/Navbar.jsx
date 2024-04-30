@@ -21,7 +21,7 @@ import UserData from '../../contexts/UserData';
 import SignUp from '../modals/SignUp';
 
 const pages = ["about us", "author's choice"];
-const settings = ['My Trips', 'Saved Trips', 'Likes', 'Comments'];
+const settings = ['My Trips', 'Saved Trips', 'Comments'];
 
 function NavBar() {
     const [anchorElNav, setAnchorElNav] = useState(null);
@@ -79,7 +79,7 @@ function NavBar() {
                                     textDecoration: 'none',
                                 }}
                             >
-                                GPTrip
+                                TripGenie
                             </Typography>
 
                             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -137,7 +137,7 @@ function NavBar() {
                                     textDecoration: 'none',
                                 }}
                             >
-                                GPTrip
+                                TripGenie
                             </Typography>
                             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                                 {pages.map((page) => (

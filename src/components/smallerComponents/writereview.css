@@ -1,0 +1,15 @@
+.rating {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+.comment-label {
+    text-align: left;
+    margin-top: 1rem !important
+}
+
+.title {
+    color: #043F33;
+    font-weight: 500 !important;
+}

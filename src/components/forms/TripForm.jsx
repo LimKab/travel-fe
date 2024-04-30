@@ -19,7 +19,7 @@ function TripForm({ initialFormData }) {
     const theme = useTheme()
     const matches = useMediaQuery(theme.breakpoints.down('sm'))
 
-    const { control, handleSubmit, reset, formState: { isSubmitting } } = useForm({
+    const { control, handleSubmit, reset, setError, clearErrors, formState: { errors, isSubmitting } } = useForm({
         defaultValues: {
             destination: '',
             experience: '',
@@ -33,7 +33,6 @@ function TripForm({ initialFormData }) {
         reset(initialFormData)
     }, [initialFormData, reset])
 
-    const [error, setError] = useState(null)
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
     const {
@@ -46,6 +45,7 @@ function TripForm({ initialFormData }) {
     const notify = (err) => toast.error(err, toastTopCenter)
 
     async function onSubmit(data) {
+        clearErrors()
         setLoading(true)
         console.log(data);
         setFormData(data)
@@ -69,9 +69,10 @@ function TripForm({ initialFormData }) {
             // console.log(tripData.response);
         } catch (err) {
             console.error(err);
-            setError('Something went worng with search so checkout Thailand for now (;')
+            setError('destination', { type: 'manual', message: 'Something went worng with search so checkout Thailand for now (;' })
             setTripData(thailand.response)
-            notify(err)
+            notify(err.message || 'Something went wrong with your trip search.')
+            navigate('/results')
             setLoading(false)
         }
     }
@@ -86,13 +87,16 @@ function TripForm({ initialFormData }) {
                         orientation={matches ? 'vertical' : 'horizontal'}
                     >
 
-                        < SelectionInput control={control} name={'destination'} arr={countryOptions} onError={(newError) => setError(newError)} />
-                        < SelectionInput control={control} name={'experience'} arr={experience} onError={(newError) => setError(newError)} />
-                        < SelectionInput control={control} name={'season'} arr={season} onError={(newError) => setError(newError)} />
-                        < SelectionInput control={control} name={'budget'} arr={budget} onError={(newError) => setError(newError)} />
+                        < SelectionInput control={control} name={'destination'} arr={countryOptions} />
+                        < SelectionInput control={control} name={'experience'} arr={experience} />
+                        < SelectionInput control={control} name={'season'} arr={season} />
+                        < SelectionInput control={control} name={'budget'} arr={budget} />
 
                     </ButtonGroup>
-                    {error && <p >{error.message}</p>}
+                    {Object.keys(errors).map((fieldName, index) => (
+                        <Typography key={index} color="error">
+                            {errors[fieldName].message}
+                        </Typography>))}
 
                     <Button
                         disabled={isSubmitting}
@@ -113,15 +117,14 @@ function TripForm({ initialFormData }) {
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-                backgroundColor: 'rgba(255, 255, 255, 0.8)', // Semi-transparent background
-                zIndex: 9999 // Make sure it's on top of other content
+                backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                zIndex: 9999
             }}>
                 <img src={loadingGif} alt="Loading..." style={{ width: '80%', opacity: 0.8, borderRadius: 15 }} />
                 <div style={{
-                    position: 'absolute', // Position absolutely within the fixed container
-                    bottom: '10%', // Push 10% from the bottom
-                    textAlign: 'center', // Center-align text
-                    width: '100%' // Take full width to center content
+                    position: 'absolute',
+                    bottom: '10%',
+                    textAlign: 'center',
                 }}>
                     <Typography component="div" variant="h5" color={colors.brandDarkGreen} m={2}>
                         Want faster results?

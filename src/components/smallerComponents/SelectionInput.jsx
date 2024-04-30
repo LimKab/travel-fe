@@ -2,7 +2,7 @@ import { Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material
 import { Controller } from "react-hook-form"
 import { colors } from "../../utils/colors"
 
-function SelectionInput({ control, name, arr, onError }) {
+function SelectionInput({ control, name, arr }) {
     return (
         <>
             <Button sx={{
@@ -25,7 +25,7 @@ function SelectionInput({ control, name, arr, onError }) {
                         control={control}
                         rules={{ required: `${name} is required` }}
                         render={({ field, fieldState: { error } }) => {
-                            onError(error)
+
                             return (
                                 <Select
                                     id={name}

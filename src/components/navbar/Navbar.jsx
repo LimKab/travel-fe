@@ -1,10 +1,8 @@
-
 import * as React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { MdOutlineTravelExplore } from "react-icons/md";
-import { Link, useNavigate } from 'react-router-dom';
-
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -18,9 +16,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { SvgIcon } from '@mui/material';
-
 import Login from '../modals/Login';
-
 import UserData from '../../contexts/UserData';
 import SignUp from '../modals/SignUp';
 
@@ -35,6 +31,8 @@ function NavBar() {
     const { userdata, setUserdata } = useContext(UserData)
     const [showLogin, setShowLogin] = useState(false);
     const [showSignUp, setShowSignUp] = useState(false)
+    const location = useLocation()
+    const isHomePage = location.pathname === '/'
 
     function logout() {
         setUserdata()
@@ -59,7 +57,7 @@ function NavBar() {
     return (
         <>
             <div >
-                <AppBar position="static" sx={{ bgcolor: 'primary', minHeight: 56, height: 56 }}>
+                <AppBar position="static" sx={{ bgcolor: { md: (isHomePage ? `rgb(16,64,59, 0.3)` : 'primary') }, minHeight: 56, height: 56 }}>
                     <Container maxWidth="100%">
                         <Toolbar disableGutters sx={{ minHeight: '56px !important', height: 56 }}>
                             <SvgIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}>

@@ -22,6 +22,8 @@ function App() {
 
   const [userdata, setUserdata] = useState();
   const [showTripModal, setShowTripModal] = useState(false)
+  const [tripToSeeMore, setTripToSeeMore] = useState(null)
+  const [showTripDialog, setShowTripDialog] = useState(false)
   const [formData, setFormData] = useState(null)
   const [tripData, setTripData] = useState(null)
 
@@ -37,7 +39,7 @@ function App() {
   return (
     <>
       <UserData.Provider value={{ userdata, setUserdata }}>
-        <TripModal.Provider value={{ showTripModal, setShowTripModal }}>
+        <TripModal.Provider value={{ showTripModal, setShowTripModal, showTripDialog, setShowTripDialog, tripToSeeMore, setTripToSeeMore }}>
           <TripDataContext.Provider value={{ formData, setFormData, tripData, setTripData }}>
             <Router>
               <NavBar />

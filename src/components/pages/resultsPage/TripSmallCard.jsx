@@ -11,6 +11,12 @@ import SlidingShowcase from '../../smallerComponents/SlidingShowcase';
 
 function TripSmallCard({ item }) {
     const { showTripModal, setShowTripModal } = useContext(TripModal)
+    const { tripToSeeMore, setTripToSeeMore } = useContext(TripModal)
+
+    const handleClick = () => {
+        setTripToSeeMore(item)
+        setShowTripModal(true)
+    }
     return (
         <>
             <Card sx={{ display: 'flex', width: '100%', justifyContent: "center", alignItems: "center", borderRadius: '8px' }}>
@@ -33,15 +39,13 @@ function TripSmallCard({ item }) {
                     </Box>
 
                     <Box sx={{ display: 'flex', justifyContent: { xs: 'center', sm: 'flex-end' }, mb: 2, mr: { sm: '26px' } }}>
-                        <Button variant="contained" disableElevation sx={{ width: 200, borderRadius: '8px' }} onClick={() => {
-                            setShowTripModal(true)
-                            console.log(item)
-                        }}>see more</Button>
+                        <Button variant="contained" disableElevation sx={{ width: 200, borderRadius: '8px' }}
+                            onClick={handleClick}>see more</Button>
                     </Box>
                 </Box>
             </Card >
 
-            {showTripModal && <TripCard item={item} />}
+            {showTripModal && <TripCard tripToSeeMore={tripToSeeMore} />}
         </>
     )
 }

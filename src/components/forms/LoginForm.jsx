@@ -1,5 +1,5 @@
 
-import { Box, Button, Container, Grid } from '@mui/material';
+import { Box, Button, Container, Grid, TextField } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
 export default function LoginForm({ onSubmit }) {
@@ -24,18 +24,21 @@ export default function LoginForm({ onSubmit }) {
                 <Box component="form" onSubmit={handleSubmit(onSubmit)}>
                     <Grid container spacing={2}>
                         <Grid item xs={12}>
-                            <input {...register('email', {
-                                required: "Email is required",
-                            })}
+
+                            <TextField id="email" label="Email" variant="outlined" size="small"
+                                {...register('email', {
+                                    required: "Email is required",
+                                })}
                                 type='email'
                                 placeholder='Email'
                             />
                             {errors.email && (<p>{`${errors.email.message}`}</p>)}
                         </Grid>
                         <Grid item xs={12}>
-                            <input {...register('password', {
-                                required: "Password is required",
-                            })}
+                            <TextField id="password" label="Password" variant="outlined" size="small"
+                                {...register('password', {
+                                    required: "Password is required",
+                                })}
                                 type='password'
                                 placeholder='Password'
                             />

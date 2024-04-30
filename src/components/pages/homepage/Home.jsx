@@ -2,13 +2,20 @@ import { Box, Typography } from "@mui/material"
 import TravelVideo from "./TravelVideo"
 import { colors } from "../../../utils/colors"
 import TripForm from "../../forms/TripForm"
-
+import VideoBackground from "./VideoBackground"
+import './home.css'
 
 function Home() {
     return (
         <>
+            <div className="video-background">
+                <div className="video-foreground">
+                    <VideoBackground />
+                </div>
+            </div>
             <Box
-                minHeight={250}
+                minHeight={400}
+                height={540}
                 maxWidth='100%'
                 my={4}
                 display="flex"
@@ -17,14 +24,16 @@ function Home() {
                 gap={4}
                 p={2}
                 m={0}
-                bgcolor={colors.brandDarkGreen}
+                bgcolor={`rgb(16,64,59, 0.3)`}
                 justifyContent="center"
+                sx={{ position: 'relative', zIndex: 2, bgcolor: { xs: colors.brandDarkGreen, md: `rgb(16,64,59, 0.3)` } }}
             >
                 <Typography variant="h3" display="block" gutterBottom color={colors.brandWhite}>
                     Experience your AI generated trip!
                 </Typography>
                 <TripForm />
-            </Box>
+            </Box >
+
             <TravelVideo />
         </>
     )

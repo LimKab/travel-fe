@@ -1,0 +1,46 @@
+.video-iframe {
+    position: fixed;
+    /* Makes the video stay in place even on scrolling */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+    /* Viewport height */
+    z-index: -1;
+    /* Sends the video to the back */
+    pointer-events: none;
+    /* Allows clicks to pass through to elements below */
+    overflow: hidden;
+}
+
+/* Ensure the iframe within the component stretches properly */
+.video-iframe iframe {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.video-background {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100vw;
+    min-height: 100vh;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.video-foreground iframe {
+    position: absolute;
+    top: -25%;
+    /* These values depend on the aspect ratio you want */
+    left: 0;
+    /* transform: translate(-50%, -50%); */
+    width: 100vw;
+    height: 150vh;
+}

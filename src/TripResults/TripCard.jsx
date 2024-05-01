@@ -16,6 +16,8 @@ import IconButton from '@mui/material/IconButton';
 import { json, useNavigate } from 'react-router-dom';
 import TripDataContext from '../contexts/TripDataContext';
 import WriteReview from '../components/smallerComponents/WriteReview';
+import { loadStoredToken } from '../utils/utility';
+import SignUp from '../components/modals/SignUp';
 // import TripSmallCard from '../components/pages/resultsPage/TripSmallCard';
 
 function TripCard() {
@@ -31,6 +33,8 @@ function TripCard() {
     const { showTripDialog, setShowTripDialog } = useContext(TripModal)
     const { tripToSeeMore, setTripToSeeMore } = useContext(TripModal)
     const { formData } = useContext(TripDataContext)
+    const [showLogin, setShowLogin] = useState(false)
+    const [showSignUp, setShowSignUp] = useState(false)
 
     const hotels = [1, 2, 3]
     const restaurants = [1, 2, 3]
@@ -87,6 +91,12 @@ function TripCard() {
 
 
     const handleSave = async () => {
+        const token = loadStoredToken()
+        console.log(token);
+        if (!token) {
+            setShowSignUp(true)
+            return
+        }
         try {
             const response = await fetch(`https://travel-guides-be-1.onrender.com/`, {
                 method: 'POST',
@@ -227,6 +237,7 @@ function TripCard() {
                 <Button variant="contained" disableElevation className='trip-card-buttons' onClick={() => setShowTripModal(false)}>Back</Button>
                 <Button variant="contained" disableElevation className='trip-card-buttons' onClick={handleSave}>Save this trip</Button>
             </Container>
+            <SignUp showSignUp={showSignUp} setShowSignUp={setShowSignUp} setShowLogin={setShowLogin}></SignUp>
         </Modal>
     )
 }

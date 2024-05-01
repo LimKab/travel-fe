@@ -20,7 +20,7 @@ function Profile() {
       setFamilyName(userdata.familyName || '');
       setProfilePicture(userdata.profilePicture); // Assuming the profile picture URL is provided in userdata
     }
-  }, [userdata] );
+  }, [userdata]);
 
   const handleNameChange = (e) => {
     setUserName(e.target.value);
@@ -54,7 +54,7 @@ function Profile() {
     }
 
     try {
-      const response = await axios.put(`/api/profile/${userdata.username}`, formData, {
+      const response = await axios.put(`http://localhost:3001/profile/${userdata.username}/${userdata.password}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

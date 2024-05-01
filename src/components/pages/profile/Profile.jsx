@@ -11,9 +11,9 @@ function Profile() {
   const [familyName, setFamilyName] = useState('');
   const [profilePicture, setProfilePicture] = useState('');
   const [message, setMessage] = useState('');
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
   const { userdata } = useContext(UserData); // Get userdata from the context
-
-
 
   useEffect(() => {
     if (userdata) {
@@ -21,6 +21,7 @@ function Profile() {
       setEmail(userdata.email);
       setAge(userdata.age || '');
       setFamilyName(userdata.familyName || '');
+      setPassword(userdata.password)
       setProfilePicture(userdata.profilePicture); // Assuming the profile picture URL is provided in userdata
     }
   }, [userdata]);
@@ -52,13 +53,14 @@ function Profile() {
     formData.append('email', email);
     formData.append('age', age);
     formData.append('familyName', familyName);
+    formData.append('password', password)
     if (profilePicture) {
       formData.append('profilePicture', profilePicture);
     }
-
+    console.log(formData);
     try {
       const token = loadStoredToken()
-      const response = await axios.put(`http://localhost:3001/profile/${userdata.email}/${userdata.password}`, formData, {
+      const response = await axios.put(`http://localhost:3001/profile/${userdata._id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'authorization': token
@@ -101,14 +103,22 @@ function Profile() {
             <input type="text" value={familyName} onChange={handleFamilyNameChange} />
           </div>
           <div>
+            <label>Password:</label>
+            <input type="password" value={password} onChange={handleFamilyNameChange} />
+          </div>
+          <div>
+            <label>Confirn password:</label>
+            <input type="password" value={confirmPassword} onChange={handleFamilyNameChange} />
+          </div>
+          <div>
             <label>Upload Profile Picture:</label>
             <input type="file" onChange={handleImageChange} />
           </div>
           <button type="submit">Save Changes</button>
         </form>
         {message && <div>{message}</div>}
-      </div>
-    </div>
+      </div >
+    </div >
   );
 }
 

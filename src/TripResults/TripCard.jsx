@@ -18,7 +18,6 @@ import TripDataContext from '../contexts/TripDataContext';
 import WriteReview from '../components/smallerComponents/WriteReview';
 import { loadStoredToken } from '../utils/utility';
 import SignUp from '../components/modals/SignUp';
-// import TripSmallCard from '../components/pages/resultsPage/TripSmallCard';
 
 function TripCard() {
 
@@ -33,7 +32,8 @@ function TripCard() {
     const { showTripDialog, setShowTripDialog } = useContext(TripModal)
     const { tripToSeeMore, setTripToSeeMore } = useContext(TripModal)
     const { formData } = useContext(TripDataContext)
-    const [placeName, setPlaceName] = useState('')    const [showLogin, setShowLogin] = useState(false)
+    const [placeName, setPlaceName] = useState('')
+    const [showLogin, setShowLogin] = useState(false)
     const [showSignUp, setShowSignUp] = useState(false)
 
     const [address, setAddress] = useState('')
@@ -44,9 +44,6 @@ function TripCard() {
         address: address,
         placeType: placeType
     }
-    // const hotels = [1, 2, 3]
-    // const restaurants = [1, 2, 3]
-    // const attractions = [1, 2, 3, 4, 5]
 
     const handleSeeHotelReviews = async () => {
         setShowHotelReviews(!showHotelReviews)

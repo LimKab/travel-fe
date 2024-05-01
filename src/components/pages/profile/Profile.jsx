@@ -57,14 +57,14 @@ function Profile() {
     if (profilePicture) {
       formData.append('profilePicture', profilePicture);
     }
-    console.log(formData);
+
     try {
       const token = loadStoredToken()
       const response = await axios.put(`http://localhost:3001/profile/${userdata._id}`, formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          'content-type': 'application/json',
           'authorization': token
-        },
+        }
       });
       setMessage(response.data.message);
     } catch (error) {

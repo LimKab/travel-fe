@@ -57,12 +57,12 @@ function Profile() {
     if (profilePicture) {
       formData.append('profilePicture', profilePicture);
     }
-    console.log(formData);
     try {
       const token = loadStoredToken()
+      console.log('test: ', formData)
       const response = await axios.put(`http://localhost:3001/profile/${userdata._id}`, formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'application / json',
           'authorization': token
         },
       });
@@ -87,32 +87,32 @@ function Profile() {
         <h2>Edit Profile for {userName}</h2>
         <form onSubmit={handleSubmit}>
           <div>
-            <label>Name:</label>
-            <input type="text" value={userName} onChange={handleNameChange} />
+            <label htmlFor="userName">Name:</label>
+            <input className='profile-input' type="text" id="userName" value={userName} onChange={handleNameChange} />
           </div>
           <div>
-            <label>Email:</label>
-            <input type="email" value={email} onChange={handleEmailChange} />
+            <label htmlFor="email">Email:</label>
+            <input className='profile-input' type="email" id="email" value={email} onChange={handleEmailChange} />
           </div>
           <div>
-            <label>Age:</label>
-            <input type="text" value={age} onChange={handleAgeChange} />
+            <label htmlFor="age">Age:</label>
+            <input className='profile-input' type="text" id='age' value={age} onChange={handleAgeChange} />
           </div>
           <div>
-            <label>Family Name:</label>
-            <input type="text" value={familyName} onChange={handleFamilyNameChange} />
+            <label htmlFor="familyName">Family Name:</label>
+            <input className='profile-input' type="text" id='familyName' value={familyName} onChange={handleFamilyNameChange} />
           </div>
           <div>
-            <label>Password:</label>
-            <input type="password" value={password} onChange={handleFamilyNameChange} />
+            <label htmlFor="password">Change password:</label>
+            <input className='profile-input' type="password" id='password' value={password} onChange={handleFamilyNameChange} />
           </div>
           <div>
-            <label>Confirn password:</label>
-            <input type="password" value={confirmPassword} onChange={handleFamilyNameChange} />
+            <label htmlFor="confirnPassword">Confirn password:</label>
+            <input className='profile-input' type="password" id='confirmPassword' value={confirmPassword} onChange={handleFamilyNameChange} />
           </div>
           <div>
             <label>Upload Profile Picture:</label>
-            <input type="file" onChange={handleImageChange} />
+            <input className='profile-input' type="file" onChange={handleImageChange} />
           </div>
           <button type="submit">Save Changes</button>
         </form>

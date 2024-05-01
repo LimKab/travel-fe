@@ -15,6 +15,7 @@ import TripResults from './components/pages/resultsPage/TripResults.jsx';
 import TripModal from './contexts/TripModal.js';
 import TripDataContext from './contexts/TripDataContext.js';
 import { loadStoredUserData } from './utils/utility.js';
+import Footer from './components/footer/Footer.jsx';
 
 
 
@@ -56,6 +57,7 @@ function App() {
                 <Route path='/my-reviews' element={<TripCard />} />
               </Routes>
             </Router>
+            <Footer/>
           </TripDataContext.Provider>
         </TripModal.Provider>
       </UserData.Provider >

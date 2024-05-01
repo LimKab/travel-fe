@@ -13,7 +13,7 @@ import RateReviewOutlinedIcon from '@mui/icons-material/RateReviewOutlined';
 import ReviewsIcon from '@mui/icons-material/Reviews';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
-import { json, useNavigate } from 'react-router-dom';
+import { json } from 'react-router-dom';
 import TripDataContext from '../contexts/TripDataContext';
 import WriteReview from '../components/smallerComponents/WriteReview';
 // import TripSmallCard from '../components/pages/resultsPage/TripSmallCard';
@@ -31,12 +31,18 @@ function TripCard() {
     const { showTripDialog, setShowTripDialog } = useContext(TripModal)
     const { tripToSeeMore, setTripToSeeMore } = useContext(TripModal)
     const { formData } = useContext(TripDataContext)
+    const [placeName, setPlaceName] = useState('')
+    const [address, setAddress] = useState('')
+    const [placeType, setPlaceType] = useState('')
 
-    const hotels = [1, 2, 3]
-    const restaurants = [1, 2, 3]
-    const attractions = [1, 2, 3, 4, 5]
-
-    console.log(tripToSeeMore?.topAttractions)
+    const placeInfo = {
+        placeName: placeName,
+        address: address,
+        placeType: placeType
+    }
+    // const hotels = [1, 2, 3]
+    // const restaurants = [1, 2, 3]
+    // const attractions = [1, 2, 3, 4, 5]
 
     const handleSeeHotelReviews = async () => {
         setShowHotelReviews(!showHotelReviews)
@@ -85,7 +91,6 @@ function TripCard() {
         }
     }
 
-
     const handleSave = async () => {
         try {
             const response = await fetch(`https://travel-guides-be-1.onrender.com/`, {
@@ -130,7 +135,7 @@ function TripCard() {
                     }
                 }}>
                     {
-                        hotels.map((hotel, i) => <div className="inner-containers" key={i} >
+                        (tripToSeeMore.topHotels).map((hotel, i) => <div className="inner-containers" key={i} >
                             <Container className='inner-left-container'>
                                 <div className='top-row'>
                                     <Chip label={tripToSeeMore?.topHotels[i].name} variant="outlined" className='sliding-place-name' />
@@ -145,7 +150,12 @@ function TripCard() {
                                     <p className='view-comments'>See reviews</p>
                                     <ReviewsIcon className='reviews-icon' />
                                 </div>
-                                <Tooltip className='tooltip' placement='top' title="Write a review" onClick={() => { setShowTripDialog(!showTripDialog) }}>
+                                <Tooltip className='tooltip' placement='top' title="Write a review" onClick={() => {
+                                    setPlaceName(hotel.name)
+                                    setAddress(hotel.address)
+                                    setPlaceType('hotel')
+                                    setShowTripDialog(!showTripDialog)
+                                }}>
                                     <IconButton>
                                         <RateReviewOutlinedIcon className='write-review-icon' />
                                     </IconButton>
@@ -156,7 +166,7 @@ function TripCard() {
                     }
                 </Carousel>
                 {showHotelReviews && <Comments />}
-                {showTripDialog && <WriteReview />}
+                {showTripDialog && <WriteReview placeInfo={placeInfo} />}
 
                 <Carousel className='carousel' next={() => { if (showRestaurantReviews) setShowRestaurantReviews(false) }} prev={() => { if (showRestaurantReviews) setShowRestaurantReviews(false) }} autoPlay={false} indicatorContainerProps={{
                     style: {
@@ -164,7 +174,7 @@ function TripCard() {
                     }
                 }}>
                     {
-                        restaurants.map((restaurant, i) => <div className="inner-containers" key={i}>
+                        (tripToSeeMore.topRestaurants).map((restaurant, i) => <div className="inner-containers" key={i}>
                             <Container className='inner-left-container'>
                                 <div className='top-row'>
                                     <Chip label={tripToSeeMore?.topRestaurants[i].name} variant="outlined" className='sliding-place-name' />
@@ -179,7 +189,7 @@ function TripCard() {
                                     <p className='view-comments'>See reviews</p>
                                     <ReviewsIcon className='reviews-icon' />
                                 </div>
-                                <Tooltip className='tooltip' placement='top' title="Write a review" onClick={() => { setShowTripDialog(!showTripDialog) }}>
+                                <Tooltip className='tooltip' placement='top' title="Write a review">
                                     <IconButton>
                                         <RateReviewOutlinedIcon className='write-review-icon' />
                                     </IconButton>
@@ -197,7 +207,7 @@ function TripCard() {
                     }
                 }}>
                     {
-                        attractions.map((attraction, i) => <div className="inner-containers" key={i}>
+                        (tripToSeeMore.topAttractions).map((attraction, i) => <div className="inner-containers" key={i}>
                             <Container className='inner-left-container'>
                                 <div className='top-row'>
                                     <Chip label={tripToSeeMore?.topAttractions[i].name} variant="outlined" className='sliding-place-name' />
@@ -212,7 +222,7 @@ function TripCard() {
                                     <p className='view-comments'>See reviews</p>
                                     <ReviewsIcon className='reviews-icon' />
                                 </div>
-                                <Tooltip className='tooltip' placement='top' title="Write a review" onClick={() => { setShowTripDialog(!showTripDialog) }}>
+                                <Tooltip className='tooltip' placement='top' title="Write a review">
                                     <IconButton>
                                         <RateReviewOutlinedIcon className='write-review-icon' />
                                     </IconButton>

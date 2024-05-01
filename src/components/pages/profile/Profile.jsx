@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import UserData from '../../../contexts/UserData';
 import './Profile.css'; // Import CSS file for styling
+import { loadStoredToken } from '../../../utils/utility';
 
 function Profile() {
   const [userName, setUserName] = useState('');
@@ -11,6 +12,8 @@ function Profile() {
   const [profilePicture, setProfilePicture] = useState('');
   const [message, setMessage] = useState('');
   const { userdata } = useContext(UserData); // Get userdata from the context
+
+
 
   useEffect(() => {
     if (userdata) {
@@ -54,9 +57,11 @@ function Profile() {
     }
 
     try {
+      const token = loadStoredToken()
       const response = await axios.put(`http://localhost:3001/profile/${userdata.username}/${userdata.password}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
+          'authorization': token
         },
       });
       setMessage(response.data.message);

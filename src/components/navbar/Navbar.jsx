@@ -20,14 +20,11 @@ import Login from '../modals/Login';
 import UserData from '../../contexts/UserData';
 import SignUp from '../modals/SignUp';
 
-const pages = ["about us", "author's choice"];
-// const settings = ['My Trips', 'Saved Trips', 'Comments'];
 
 function NavBar() {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
     const navigate = useNavigate()
-
     const { userdata, setUserdata } = useContext(UserData)
     const [showLogin, setShowLogin] = useState(false);
     const [showSignUp, setShowSignUp] = useState(false)
@@ -111,11 +108,12 @@ function NavBar() {
                                         display: { xs: 'block', md: 'none' },
                                     }}
                                 >
-                                    {pages.map((page) => (
-                                        <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                            <Typography textAlign="center">{page}</Typography>
-                                        </MenuItem>
-                                    ))}
+                                    <MenuItem key='about' onClick={() => navigate('/about')}>
+                                        <Typography textAlign="center">about us</Typography>
+                                    </MenuItem>
+                                    <MenuItem key='choice' onClick={() => navigate('/authors-choice')}>
+                                        <Typography textAlign="center">author's choice</Typography>
+                                    </MenuItem>
                                 </Menu>
                             </Box>
                             <SvgIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}>
@@ -140,15 +138,20 @@ function NavBar() {
                                 TripGenie
                             </Typography>
                             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                                {pages.map((page) => (
-                                    <Button
-                                        key={page}
-                                        onClick={handleCloseNavMenu}
-                                        sx={{ my: 2, color: 'white', display: 'block' }}
-                                    >
-                                        {page}
-                                    </Button>
-                                ))}
+                                <Button
+                                    key='about'
+                                    onClick={() => navigate('/about')}
+                                    sx={{ my: 2, color: 'white', display: 'block' }}
+                                >
+                                    about us
+                                </Button>
+                                <Button
+                                    key='authors choice'
+                                    onClick={() => navigate('/authors-choice')}
+                                    sx={{ my: 2, color: 'white', display: 'block' }}
+                                >
+                                    author's choice
+                                </Button>
                             </Box>
 
                             <Box sx={{ flexGrow: 0 }}>
@@ -176,11 +179,6 @@ function NavBar() {
                                     {userdata && <MenuItem key='Edit Profile' onClick={() => navigate('/profile')}>
                                         <Typography textAlign="center" >Edit Profile</Typography>
                                     </MenuItem>}
-                                    {/* {userdata && settings.map((setting) => (
-                                        <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                            <Typography textAlign="center">{setting}</Typography>
-                                        </MenuItem>
-                                    ))} */}
                                     {userdata && <MenuItem key='Logout' onClick={() => logout()}>
                                         <Typography textAlign="center" >Logout</Typography>
                                     </MenuItem>}
@@ -206,7 +204,7 @@ function NavBar() {
                         <SignUp showSignUp={showSignUp} setShowSignUp={setShowSignUp} setShowLogin={setShowLogin}></SignUp>
                     </Container>
                 </AppBar>
-            </div>
+            </div >
         </>
     )
 }

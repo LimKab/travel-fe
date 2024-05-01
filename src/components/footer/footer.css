@@ -1,0 +1,15 @@
+.bgGreen {
+    background-color: #8AA6A3;
+        border-top: 1px solid #10403B;
+        margin-top: auto;
+        color: black;
+        padding: 20px;
+        text-align: center;
+        flex-grow: 1;
+}
+
+.footerLink {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}

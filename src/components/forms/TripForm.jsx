@@ -65,7 +65,7 @@ function TripForm({ initialFormData }) {
                 console.log('after timeout')
                 setLoading(false)
                 navigate('/results')
-            }, 30000)
+            }, 2000)
             // console.log(tripData.response);
         } catch (err) {
             console.error(err);

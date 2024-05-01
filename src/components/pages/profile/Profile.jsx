@@ -58,7 +58,7 @@ function Profile() {
 
     try {
       const token = loadStoredToken()
-      const response = await axios.put(`http://localhost:3001/profile/${userdata.username}/${userdata.password}`, formData, {
+      const response = await axios.put(`http://localhost:3001/profile/${userdata.email}/${userdata.password}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'authorization': token

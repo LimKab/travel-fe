@@ -18,6 +18,7 @@ import TripDataContext from '../contexts/TripDataContext';
 import WriteReview from '../components/smallerComponents/WriteReview';
 import { loadStoredToken } from '../utils/utility';
 import SignUp from '../components/modals/SignUp';
+import Login from '../components/modals/Login';
 // import TripSmallCard from '../components/pages/resultsPage/TripSmallCard';
 
 function TripCard() {
@@ -237,6 +238,7 @@ function TripCard() {
                     <Button variant="contained" disableElevation className='trip-card-buttons' onClick={handleSave}>Save this trip</Button>
                 </Container>
             </Modal>
+            <Login showLogin={showLogin} setShowLogin={setShowLogin} setShowSignUp={setShowSignUp}></Login>
             <SignUp showSignUp={showSignUp} setShowSignUp={setShowSignUp} setShowLogin={setShowLogin}></SignUp>
         </>
     )

@@ -21,7 +21,7 @@ import UserData from '../../contexts/UserData';
 import SignUp from '../modals/SignUp';
 
 const pages = ["about us", "author's choice"];
-const settings = ['My Trips', 'Saved Trips', 'Comments'];
+// const settings = ['My Trips', 'Saved Trips', 'Comments'];
 
 function NavBar() {
     const [anchorElNav, setAnchorElNav] = useState(null);
@@ -176,11 +176,11 @@ function NavBar() {
                                     {userdata && <MenuItem key='Edit Profile' onClick={() => navigate('/profile')}>
                                         <Typography textAlign="center" >Edit Profile</Typography>
                                     </MenuItem>}
-                                    {userdata && settings.map((setting) => (
+                                    {/* {userdata && settings.map((setting) => (
                                         <MenuItem key={setting} onClick={handleCloseUserMenu}>
                                             <Typography textAlign="center">{setting}</Typography>
                                         </MenuItem>
-                                    ))}
+                                    ))} */}
                                     {userdata && <MenuItem key='Logout' onClick={() => logout()}>
                                         <Typography textAlign="center" >Logout</Typography>
                                     </MenuItem>}
@@ -189,6 +189,15 @@ function NavBar() {
                                     </MenuItem>}
                                     {!userdata && <MenuItem key='SignUp' onClick={() => setShowSignUp(true)}>
                                         <Typography textAlign="center" >Sign up</Typography>
+                                    </MenuItem>}
+                                    {userdata && <MenuItem key='My Trips' onClick={() => navigate('/my-trips')}>
+                                        <Typography textAlign="center" >My Trips</Typography>
+                                    </MenuItem>}
+                                    {userdata && <MenuItem key='Saved Trips' onClick={() => navigate('/saved-trips')}>
+                                        <Typography textAlign="center" >Saved Trips</Typography>
+                                    </MenuItem>}
+                                    {userdata && <MenuItem key='My reviews' onClick={() => navigate('/my-reviews')}>
+                                        <Typography textAlign="center" >My reviews</Typography>
                                     </MenuItem>}
                                 </Menu>
                             </Box>

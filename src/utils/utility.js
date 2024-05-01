@@ -7,3 +7,13 @@ export const loadStoredUserData = () => {
         return null
     }
 }
+
+export const loadStoredToken = () => {
+    const storedToken = localStorage.getItem('token');
+    if (typeof storedToken === 'string') {
+        const userdata = JSON.parse(storedToken)
+        return userdata
+    } else {
+        return null
+    }
+}

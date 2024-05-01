@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import UserData from '../../../contexts/UserData';
 import './Profile.css'; // Import CSS file for styling
+import { loadStoredToken } from '../../../utils/utility';
 
 function Profile() {
   const [userName, setUserName] = useState('');
@@ -10,6 +11,8 @@ function Profile() {
   const [familyName, setFamilyName] = useState('');
   const [profilePicture, setProfilePicture] = useState('');
   const [message, setMessage] = useState('');
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
   const { userdata } = useContext(UserData); // Get userdata from the context
 
   useEffect(() => {
@@ -18,9 +21,10 @@ function Profile() {
       setEmail(userdata.email);
       setAge(userdata.age || '');
       setFamilyName(userdata.familyName || '');
+      setPassword(userdata.password)
       setProfilePicture(userdata.profilePicture); // Assuming the profile picture URL is provided in userdata
     }
-  }, [userdata] );
+  }, [userdata]);
 
   const handleNameChange = (e) => {
     setUserName(e.target.value);
@@ -49,15 +53,19 @@ function Profile() {
     formData.append('email', email);
     formData.append('age', age);
     formData.append('familyName', familyName);
+    formData.append('password', password)
     if (profilePicture) {
       formData.append('profilePicture', profilePicture);
     }
 
     try {
-      const response = await axios.put(`/api/profile/${userdata.username}`, formData, {
+      const token = loadStoredToken()
+      console.log('test: ', formData)
+      const response = await axios.put(`http://localhost:3001/profile/${userdata._id}`, formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
-        },
+          'content-type': 'application/json',
+          'authorization': token
+        }
       });
       setMessage(response.data.message);
     } catch (error) {
@@ -80,30 +88,38 @@ function Profile() {
         <h2>Edit Profile for {userName}</h2>
         <form onSubmit={handleSubmit}>
           <div>
-            <label>Name:</label>
-            <input type="text" value={userName} onChange={handleNameChange} />
+            <label htmlFor="userName">Name:</label>
+            <input className='profile-input' type="text" id="userName" value={userName} onChange={handleNameChange} />
           </div>
           <div>
-            <label>Email:</label>
-            <input type="email" value={email} onChange={handleEmailChange} />
+            <label htmlFor="email">Email:</label>
+            <input className='profile-input' type="email" id="email" value={email} onChange={handleEmailChange} />
           </div>
           <div>
-            <label>Age:</label>
-            <input type="text" value={age} onChange={handleAgeChange} />
+            <label htmlFor="age">Age:</label>
+            <input className='profile-input' type="text" id='age' value={age} onChange={handleAgeChange} />
           </div>
           <div>
-            <label>Family Name:</label>
-            <input type="text" value={familyName} onChange={handleFamilyNameChange} />
+            <label htmlFor="familyName">Family Name:</label>
+            <input className='profile-input' type="text" id='familyName' value={familyName} onChange={handleFamilyNameChange} />
+          </div>
+          <div>
+            <label htmlFor="password">Change password:</label>
+            <input className='profile-input' type="password" id='password' value={password} onChange={handleFamilyNameChange} />
+          </div>
+          <div>
+            <label htmlFor="confirnPassword">Confirn password:</label>
+            <input className='profile-input' type="password" id='confirmPassword' value={confirmPassword} onChange={handleFamilyNameChange} />
           </div>
           <div>
             <label>Upload Profile Picture:</label>
-            <input type="file" onChange={handleImageChange} />
+            <input className='profile-input' type="file" onChange={handleImageChange} />
           </div>
           <button type="submit">Save Changes</button>
         </form>
         {message && <div>{message}</div>}
-      </div>
-    </div>
+      </div >
+    </div >
   );
 }
 

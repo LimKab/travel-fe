@@ -21,7 +21,6 @@ function Profile() {
       setEmail(userdata.email);
       setAge(userdata.age || '');
       setFamilyName(userdata.familyName || '');
-      setPassword(userdata.password)
       setProfilePicture(userdata.profilePicture); // Assuming the profile picture URL is provided in userdata
     }
   }, [userdata]);
@@ -33,6 +32,10 @@ function Profile() {
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value)
+  }
 
   const handleAgeChange = (e) => {
     setAge(e.target.value);
@@ -60,7 +63,6 @@ function Profile() {
 
     try {
       const token = loadStoredToken()
-      console.log('test: ', formData)
       const response = await axios.put(`http://localhost:3001/profile/${userdata._id}`, formData, {
         headers: {
           'content-type': 'application/json',
@@ -68,6 +70,7 @@ function Profile() {
         }
       });
       setMessage(response.data.message);
+      localStorage.setItem('userdata', JSON.stringify(response.data));
     } catch (error) {
       setMessage(error.response.data.message);
     }
@@ -104,12 +107,8 @@ function Profile() {
             <input className='profile-input' type="text" id='familyName' value={familyName} onChange={handleFamilyNameChange} />
           </div>
           <div>
-            <label htmlFor="password">Change password:</label>
-            <input className='profile-input' type="password" id='password' value={password} onChange={handleFamilyNameChange} />
-          </div>
-          <div>
-            <label htmlFor="confirnPassword">Confirn password:</label>
-            <input className='profile-input' type="password" id='confirmPassword' value={confirmPassword} onChange={handleFamilyNameChange} />
+            <label htmlFor="password">Password:</label>
+            <input className='profile-input' required type="password" id='password' value={password} onChange={handlePasswordChange} />
           </div>
           <div>
             <label>Upload Profile Picture:</label>

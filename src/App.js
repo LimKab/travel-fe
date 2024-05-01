@@ -51,6 +51,9 @@ function App() {
                 <Route path='/googleMaps' element={<TestMaps />} />
                 <Route path='/results' element={<TripResults />} />
                 <Route path='/tripresults' element={<TripCard />} />
+                <Route path='/saved-trips' element={<TripCard />} />
+                <Route path='/my-trips' element={<TripCard />} />
+                <Route path='/my-reviews' element={<TripCard />} />
               </Routes>
             </Router>
           </TripDataContext.Provider>

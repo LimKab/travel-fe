@@ -14,7 +14,7 @@ function TestMaps() {
 
     const gptButton = async () => {
         try {
-            const response = await axios.get(`http://localhost:3001/gpt/${countryCode}/${season}/${tripVibe}`);
+            const response = await axios.get(`https://travel-guides-be.onrender.com/gpt/${countryCode}/${season}/${tripVibe}`);
             console.log(response.data.response);
             // Handle response data as needed
         } catch (error) {
@@ -24,7 +24,7 @@ function TestMaps() {
 
     const googleButton = async () => {
         try {
-            const response = await axios.get(`http://localhost:3001/places/${nameQuery}`);
+            const response = await axios.get(`https://travel-guides-be.onrender.com/places/${nameQuery}`);
             console.log("response", response);
             // Handle response data as needed
         } catch (error) {

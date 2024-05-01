@@ -61,7 +61,7 @@ function TripCard() {
     const handleSeeRestaurantReviews = async () => {
         setShowRestaurantReviews(!showRestaurantReviews)
         try {
-            const response = await fetch(`http://0.0.0.0:3001/`, {
+            const response = await fetch(`https://travel-guides-be.onrender.com/`, {
                 method: 'POST',
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify()
@@ -98,7 +98,7 @@ function TripCard() {
             return
         }
         try {
-            const response = await fetch(`https://travel-guides-be-1.onrender.com/`, {
+            const response = await fetch(`https://travel-guides-be.onrender.com/`, {
                 method: 'POST',
                 headers: { 'content-type': 'application/json' },
                 body: json.stringify()
@@ -112,7 +112,7 @@ function TripCard() {
 
     // const handleSave = async () => {
     //     try {
-    //         const response = await fetch(`http://localhost:3001/review`)
+    //         const response = await fetch(`https://travel-guides-be.onrender.com/review`)
     //         const data = await response.json()
     //         console.log(data)
     //     }

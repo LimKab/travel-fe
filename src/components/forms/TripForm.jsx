@@ -8,7 +8,7 @@ import { countryOptions } from "../../utils/arrays/countries"
 import SelectionInput from "../smallerComponents/SelectionInput"
 import { budget, experience, season } from "../../utils/arrays/optionsArrays"
 import { useNavigate } from "react-router-dom"
-// import axios from "axios";
+import axios from "axios";
 import TripDataContext from "../../contexts/TripDataContext"
 import { toast } from "react-toastify";
 import { toastTopCenter } from "../../utils/toasts";
@@ -55,17 +55,17 @@ function TripForm({ initialFormData }) {
         console.log(formDataWJson);
         // DO NOT USE THE POST FOR FUN - WE HAVE SAVED OBJECTS FOR THAT
         try {
-            // const response = await axios.post('http://localhost:3001/gpt/post', formDataWJson)
-            // const results = response.data
-            // console.log(results);
-            // setTripData(results.response)
-
-            setTimeout(() => {
-                setTripData(thailand.response)
-                console.log('after timeout')
-                setLoading(false)
-                navigate('/results')
-            }, 2000)
+            const response = await axios.post('https://travel-guides-be.onrender.com/gpt/post', formDataWJson)
+            const results = response.data
+            console.log(results);
+            setTripData(results.response)
+            setLoading(false)
+            navigate('/results')
+            // setTimeout(() => {
+            //     setTripData(thailand.response)
+            //     console.log('after timeout')
+                
+            // }, 2000)
             // console.log(tripData.response);
         } catch (err) {
             console.error(err);

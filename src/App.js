@@ -17,6 +17,8 @@ import TripDataContext from './contexts/TripDataContext.js';
 import { loadStoredUserData } from './utils/utility.js';
 import Footer from './components/footer/Footer.jsx';
 import { Box } from '@mui/material';
+import MyTrips from './components/pages/myTrips/MyTrips.jsx';
+import PlanedTrips from './components/pages/myTrips/PlanedTrips.jsx';
 
 
 function App() {
@@ -45,16 +47,16 @@ function App() {
               <NavBar />
               <Box minHeight="100vh" display="flex" flexDirection="column">
                 <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path='/about' element={<About />} />
-                {userdata && <Route path='/profile' element={<Profile />} />}
-                <Route path='/authors-choice' element={<AuthorsChoice />} />
-                <Route path='/googleMaps' element={<TestMaps />} />
-                <Route path='/results' element={<TripResults />} />
-                <Route path='/tripresults' element={<TripCard />} />
-                {userdata && <Route path='/saved-trips' element={<TripCard />} />}
-                {userdata && <Route path='/my-trips' element={<TripCard />} />}
-                {userdata && <Route path='/my-reviews' element={<TripCard />} />}
+                  <Route path='/' element={<Home />} />
+                  <Route path='/about' element={<About />} />
+                  {userdata && <Route path='/profile' element={<Profile />} />}
+                  <Route path='/authors-choice' element={<AuthorsChoice />} />
+                  <Route path='/googleMaps' element={<TestMaps />} />
+                  <Route path='/results' element={<TripResults />} />
+                  <Route path='/tripresults' element={<TripCard />} />
+                  {userdata && <Route path='/saved-trips' element={<PlanedTrips />} />}
+                  {userdata && <Route path='/my-trips' element={<MyTrips />} />}
+                  {userdata && <Route path='/my-reviews' element={<MyTrips />} />}
                 </Routes>
               </Box>
               <Footer />

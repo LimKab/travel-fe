@@ -16,6 +16,7 @@ import TripModal from './contexts/TripModal.js';
 import TripDataContext from './contexts/TripDataContext.js';
 import { loadStoredUserData } from './utils/utility.js';
 import Footer from './components/footer/Footer.jsx';
+import { Box } from '@mui/material';
 
 
 function App() {
@@ -42,7 +43,8 @@ function App() {
           <TripDataContext.Provider value={{ formData, setFormData, tripData, setTripData }}>
             <Router>
               <NavBar />
-              <Routes>
+              <Box minHeight="100vh" display="flex" flexDirection="column">
+                <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/about' element={<About />} />
                 {userdata && <Route path='/profile' element={<Profile />} />}
@@ -53,9 +55,10 @@ function App() {
                 {userdata && <Route path='/saved-trips' element={<TripCard />} />}
                 {userdata && <Route path='/my-trips' element={<TripCard />} />}
                 {userdata && <Route path='/my-reviews' element={<TripCard />} />}
-              </Routes>
+                </Routes>
+              </Box>
+              <Footer />
             </Router>
-            <Footer />
           </TripDataContext.Provider>
         </TripModal.Provider>
       </UserData.Provider >

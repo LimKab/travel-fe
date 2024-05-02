@@ -12,7 +12,7 @@ function Footer() {
 
 
     return (
-        <div className='bgGreen'>
+        <div className={`bgGreen ${window.innerHeight >= document.body.scrollHeight ? 'stickyFooter' : ''}`}>
             <div>
                 <p>&copy; 2024 TripGenie. All rights reserved.</p>
                 <p><span className='footerLink' onClick={popTermsOfUse}>Terms of Service</span> | <span className='footerLink' onClick={popPrivacyPolicy}>Privacy Policy</span></p>

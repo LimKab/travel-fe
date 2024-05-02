@@ -19,6 +19,7 @@ import { SvgIcon } from '@mui/material';
 import Login from '../modals/Login';
 import UserData from '../../contexts/UserData';
 import SignUp from '../modals/SignUp';
+import Logo from '../../utils/images/logopng.png';
 
 
 function NavBar() {
@@ -57,9 +58,7 @@ function NavBar() {
                 <AppBar position="static" sx={{ bgcolor: { md: (isHomePage ? `rgb(16,64,59, 0.3)` : 'primary') }, minHeight: 56, height: 56 }}>
                     <Container maxWidth="100%">
                         <Toolbar disableGutters sx={{ minHeight: '56px !important', height: 56 }}>
-                            <SvgIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}>
-                                <MdOutlineTravelExplore size="24px" />
-                            </SvgIcon>
+                            <img src={Logo} alt="Logo" style={{ display: 'flex', marginRight: '1rem', height: '50px', width: '50px' }} />
 
                             <Typography
                                 variant="h6"

@@ -22,6 +22,7 @@ function App() {
   const [userdata, setUserdata] = useState();
   const [showTripModal, setShowTripModal] = useState(false)
   const [tripToSeeMore, setTripToSeeMore] = useState(null)
+  const [openSuccessToast, setOpenSuccessToast] = useState(false)
   const [showTripDialog, setShowTripDialog] = useState(false)
   const [formData, setFormData] = useState(null)
   const [tripData, setTripData] = useState(null)

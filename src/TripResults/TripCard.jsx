@@ -13,13 +13,14 @@ import RateReviewOutlinedIcon from '@mui/icons-material/RateReviewOutlined';
 import ReviewsIcon from '@mui/icons-material/Reviews';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
-import { json, useNavigate } from 'react-router-dom';
+import { json } from 'react-router-dom';
 import TripDataContext from '../contexts/TripDataContext';
 import WriteReview from '../components/smallerComponents/WriteReview';
 import { loadStoredToken } from '../utils/utility';
 import SignUp from '../components/modals/SignUp';
 import Login from '../components/modals/Login';
-// import TripSmallCard from '../components/pages/resultsPage/TripSmallCard';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function TripCard() {
 
@@ -34,92 +35,197 @@ function TripCard() {
     const { showTripDialog, setShowTripDialog } = useContext(TripModal)
     const { tripToSeeMore, setTripToSeeMore } = useContext(TripModal)
     const { formData } = useContext(TripDataContext)
+    const [placeName, setPlaceName] = useState('')
     const [showLogin, setShowLogin] = useState(false)
     const [showSignUp, setShowSignUp] = useState(false)
+    const [address, setAddress] = useState('')
+    const [placeType, setPlaceType] = useState('')
+    const [showToast, setShowToast] = useState(false)
 
-    const hotels = [1, 2, 3]
-    const restaurants = [1, 2, 3]
-    const attractions = [1, 2, 3, 4, 5]
+    const placeInfo = {
+        placeName: placeName,
+        address: address,
+        placeType: placeType
+    }
 
-    console.log(tripToSeeMore?.topAttractions)
+    const sampleHotelReviews = [
+        {
+            "username": "JohnDoe",
+            "rating": 4.5,
+            "comment": "Amazing experience, great service!",
+            "date": "2024-04-15"
+        },
+        {
+            "username": "AliceSmith",
+            "rating": 3.8,
+            "comment": "Nice amenities but a bit overpriced.",
+            "date": "2024-03-20"
+        },
+        {
+            "username": "Traveler123",
+            "rating": 5.0,
+            "comment": "Absolutely loved it! Will definitely come back.",
+            "date": "2024-02-10"
+        },
+        {
+            "username": "JaneDoe",
+            "rating": 4.2,
+            "comment": "Comfortable stay, friendly staff.",
+            "date": "2024-04-02"
+        },
+        {
+            "username": "SamJohnson",
+            "rating": 3.5,
+            "comment": "Decent place for the price.",
+            "date": "2024-03-12"
+        },
+        {
+            "username": "EllaWilliams",
+            "rating": 4.7,
+            "comment": "Beautiful location, clean rooms.",
+            "date": "2024-04-25"
+        },
+        {
+            "username": "RobertBrown",
+            "rating": 4.0,
+            "comment": "Enjoyed the beach view, service could be improved.",
+            "date": "2024-03-05"
+        },
+        {
+            "username": "Traveler456",
+            "rating": 4.9,
+            "comment": "Fantastic experience, exceeded expectations!",
+            "date": "2024-02-20"
+        }
+    ]
+
+    const sampleRestaurantReviews = [
+        {
+            "username": "FoodieGuru",
+            "rating": 4.8,
+            "comment": "Delicious food, impeccable service.",
+            "date": "2024-04-18"
+        },
+        {
+            "username": "HealthyEater",
+            "rating": 4.2,
+            "comment": "Great variety of healthy options.",
+            "date": "2024-03-08"
+        },
+        {
+            "username": "TasteExplorer",
+            "rating": 4.5,
+            "comment": "Exquisite flavors, a bit pricey though.",
+            "date": "2024-02-15"
+        },
+        {
+            "username": "FoodieGuru",
+            "rating": 4.8,
+            "comment": "Delicious food, impeccable service.",
+            "date": "2024-04-18"
+        },
+        {
+            "username": "HealthyEater",
+            "rating": 4.2,
+            "comment": "Great variety of healthy options.",
+            "date": "2024-03-08"
+        },
+        {
+            "username": "TasteExplorer",
+            "rating": 4.5,
+            "comment": "Exquisite flavors, a bit pricey though.",
+            "date": "2024-02-15"
+        }
+    ]
+
+    const sampleAttractionReviews = [
+        {
+            "username": "ThrillSeeker",
+            "rating": 4.7,
+            "comment": "Fun for all ages.",
+            "date": "2024-04-30"
+        },
+        {
+            "username": "FamilyFun",
+            "rating": 4.2,
+            "comment": "Great day out with the family.",
+            "date": "2024-03-25"
+        },
+        {
+            "username": "RollerCoasterFan",
+            "rating": 4.5,
+            "comment": "Worth the admission.",
+            "date": "2024-02-15"
+        }
+    ]
 
     const handleSeeHotelReviews = async () => {
         setShowHotelReviews(!showHotelReviews)
-        try {
-            const response = await fetch(``, {
-                method: 'POST',
-                headers: { 'content-type': 'application/json' }
-            })
-            const data = await response.json()
-            console.log(data)
-            if (data) setHotelReviews(data)
-        } catch (err) {
-            console.log(err)
-        }
+        // try {
+        //     const response = await fetch(``, {
+        //         method: 'POST',
+        //         headers: { 'content-type': 'application/json' }
+        //     })
+        //     const data = await response.json()
+        //     console.log(data)
+        //     if (data) setHotelReviews(data)
+        // } catch (err) {
+        //     console.log(err)
+        // }
     }
 
     const handleSeeRestaurantReviews = async () => {
         setShowRestaurantReviews(!showRestaurantReviews)
-        try {
-            const response = await fetch(`http://0.0.0.0:3001/`, {
-                method: 'POST',
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify()
-            })
-            const data = await response.json()
-            console.log(data)
-            if (data) setRestaurantReviews(data)
-        } catch (err) {
-            console.log(err)
-        }
+        // try {
+        //     const response = await fetch(`http://0.0.0.0:3001/`, {
+        //         method: 'POST',
+        //         headers: { 'content-type': 'application/json' },
+        //         body: JSON.stringify()
+        //     })
+        //     const data = await response.json()
+        //     console.log(data)
+        //     if (data) setRestaurantReviews(data)
+        // } catch (err) {
+        //     console.log(err)
+        // }
     }
 
     const handleSeeAttractionReviews = async () => {
         setShowAttractionReviews(!showAttractionReviews)
-        try {
-            const response = await fetch(``, {
-                method: 'POST',
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify()
-            })
-            const data = await response.json()
-            console.log(data)
-            if (data) setAttractionReviews(data)
-        } catch (err) {
-            console.log(err)
-        }
+        // try {
+        //     const response = await fetch(``, {
+        //         method: 'POST',
+        //         headers: { 'content-type': 'application/json' },
+        //         body: JSON.stringify()
+        //     })
+        //     const data = await response.json()
+        //     console.log(data)
+        //     if (data) setAttractionReviews(data)
+        // } catch (err) {
+        //     console.log(err)
+        // }
     }
-
 
     const handleSave = async () => {
-        const token = loadStoredToken()
-        if (!token) {
-            setShowSignUp(true)
-            return
-        }
-        try {
-            const response = await fetch(`https://travel-guides-be-1.onrender.com/`, {
-                method: 'POST',
-                headers: { 'content-type': 'application/json' },
-                body: json.stringify()
-            })
-            const data = await response.json()
-        }
-        catch {
-
-        }
+        toast("Your trip has been saved!")
+        setShowToast(true)
+        // const token = loadStoredToken()
+        // if (!token) {
+        //     setShowSignUp(true)
+        //     return
+        // }
+        // try {
+        //     const response = await fetch(`http://localhost:3001/`, {
+        //         method: 'POST',
+        //         headers: { 'content-type': 'application/json' },
+        //         body: json.stringify()
+        //     })
+        //     const data = await response.json()
+        // }
+        // catch (err) {
+        //     console.log(err)
+        // }
     }
-
-    // const handleSave = async () => {
-    //     try {
-    //         const response = await fetch(`http://localhost:3001/review`)
-    //         const data = await response.json()
-    //         console.log(data)
-    //     }
-    //     catch (err) {
-    //         console.log(err)
-    //     }
-    // }
 
     return (
         <>
@@ -140,13 +246,13 @@ function TripCard() {
                         }
                     }}>
                         {
-                            hotels.map((hotel, i) => <div className="inner-containers" key={i} >
+                            (tripToSeeMore.topHotels).map((hotel, i) => <div className="inner-containers" key={i} >
                                 <Container className='inner-left-container'>
                                     <div className='top-row'>
                                         <Chip label={tripToSeeMore?.topHotels[i].name} variant="outlined" className='sliding-place-name' />
                                         <div className='average-rating'>
-                                            <Rating name="read-only" readOnly className="average-rating-stars" value={4.5} precision={0.1} />
-                                            <h4 className="average-rating-number">4.0</h4>
+                                            <Rating name="read-only" readOnly className="average-rating-stars" value={3.9} precision={0.1} />
+                                            <h4 className="average-rating-number">3.9</h4>
                                         </div>
                                     </div>
                                     <p className='sliding-place-details'>{tripToSeeMore?.topHotels[i].description}</p>
@@ -155,7 +261,12 @@ function TripCard() {
                                         <p className='view-comments'>See reviews</p>
                                         <ReviewsIcon className='reviews-icon' />
                                     </div>
-                                    <Tooltip className='tooltip' placement='top' title="Write a review" onClick={() => { setShowTripDialog(!showTripDialog) }}>
+                                    <Tooltip className='tooltip' placement='top' title="Write a review" onClick={() => {
+                                        setPlaceName(hotel.name)
+                                        setAddress(hotel.address)
+                                        setPlaceType('hotel')
+                                        setShowTripDialog(!showTripDialog)
+                                    }}>
                                         <IconButton>
                                             <RateReviewOutlinedIcon className='write-review-icon' />
                                         </IconButton>
@@ -165,8 +276,8 @@ function TripCard() {
                             </div>)
                         }
                     </Carousel>
-                    {showHotelReviews && <Comments />}
-                    {showTripDialog && <WriteReview />}
+                    {showHotelReviews && <Comments reviews={sampleHotelReviews} />}
+                    {showTripDialog && <WriteReview placeInfo={placeInfo} />}
 
                     <Carousel className='carousel' next={() => { if (showRestaurantReviews) setShowRestaurantReviews(false) }} prev={() => { if (showRestaurantReviews) setShowRestaurantReviews(false) }} autoPlay={false} indicatorContainerProps={{
                         style: {
@@ -174,13 +285,13 @@ function TripCard() {
                         }
                     }}>
                         {
-                            restaurants.map((restaurant, i) => <div className="inner-containers" key={i}>
+                            (tripToSeeMore.topRestaurants).map((restaurant, i) => <div className="inner-containers" key={i}>
                                 <Container className='inner-left-container'>
                                     <div className='top-row'>
                                         <Chip label={tripToSeeMore?.topRestaurants[i].name} variant="outlined" className='sliding-place-name' />
                                         <div className='average-rating'>
-                                            <Rating name="read-only" readOnly className="average-rating-stars" value={3.2} precision={0.1} />
-                                            <h4 className="average-rating-number">1.2</h4>
+                                            <Rating name="read-only" readOnly className="average-rating-stars" value={4.2} precision={0.1} />
+                                            <h4 className="average-rating-number">4.2</h4>
                                         </div>
                                     </div>
                                     <p className='sliding-place-details'>{tripToSeeMore?.topRestaurants[i].description}</p>
@@ -189,7 +300,12 @@ function TripCard() {
                                         <p className='view-comments'>See reviews</p>
                                         <ReviewsIcon className='reviews-icon' />
                                     </div>
-                                    <Tooltip className='tooltip' placement='top' title="Write a review" onClick={() => { setShowTripDialog(!showTripDialog) }}>
+                                    <Tooltip className='tooltip' placement='top' title="Write a review" onClick={() => {
+                                        setPlaceName(restaurant.name)
+                                        setAddress(restaurant.address)
+                                        setPlaceType('restaurant')
+                                        setShowTripDialog(!showTripDialog)
+                                    }}>
                                         <IconButton>
                                             <RateReviewOutlinedIcon className='write-review-icon' />
                                         </IconButton>
@@ -199,7 +315,7 @@ function TripCard() {
                             </div>)
                         }
                     </Carousel>
-                    {showRestaurantReviews && <Comments />}
+                    {showRestaurantReviews && <Comments reviews={sampleRestaurantReviews} />}
 
                     <Carousel next={() => { if (showAttractionReviews) setShowAttractionReviews(false) }} prev={() => { if (showAttractionReviews) setShowAttractionReviews(false) }} autoPlay={false} indicatorContainerProps={{
                         style: {
@@ -207,13 +323,13 @@ function TripCard() {
                         }
                     }}>
                         {
-                            attractions.map((attraction, i) => <div className="inner-containers" key={i}>
+                            (tripToSeeMore.topAttractions).map((attraction, i) => <div className="inner-containers" key={i}>
                                 <Container className='inner-left-container'>
                                     <div className='top-row'>
                                         <Chip label={tripToSeeMore?.topAttractions[i].name} variant="outlined" className='sliding-place-name' />
                                         <div className='average-rating'>
-                                            <Rating name="read-only" readOnly className="average-rating-stars" value={3.2} precision={0.1} />
-                                            <h4 className="average-rating-number">3.2</h4>
+                                            <Rating name="read-only" readOnly className="average-rating-stars" value={4.6} precision={0.1} />
+                                            <h4 className="average-rating-number">4.6</h4>
                                         </div>
                                     </div>
                                     <p className='sliding-place-details'>{tripToSeeMore?.topAttractions[i].description}</p>
@@ -222,7 +338,12 @@ function TripCard() {
                                         <p className='view-comments'>See reviews</p>
                                         <ReviewsIcon className='reviews-icon' />
                                     </div>
-                                    <Tooltip className='tooltip' placement='top' title="Write a review" onClick={() => { setShowTripDialog(!showTripDialog) }}>
+                                    <Tooltip className='tooltip' placement='top' title="Write a review" onClick={() => {
+                                        setPlaceName(attraction.name)
+                                        setAddress(attraction.address)
+                                        setPlaceType('attraction')
+                                        setShowTripDialog(!showTripDialog)
+                                    }}>
                                         <IconButton>
                                             <RateReviewOutlinedIcon className='write-review-icon' />
                                         </IconButton>
@@ -232,10 +353,17 @@ function TripCard() {
                             </div>)
                         }
                     </Carousel>
-                    {showAttractionReviews && <Comments />}
+                    {showAttractionReviews && <Comments reviews={sampleAttractionReviews} />}
 
                     <Button variant="contained" disableElevation className='trip-card-buttons' onClick={() => setShowTripModal(false)}>Back</Button>
                     <Button variant="contained" disableElevation className='trip-card-buttons' onClick={handleSave}>Save this trip</Button>
+                    <ToastContainer
+                        position="bottom-right"
+                        autoClose={4000}
+                        closeOnClick
+                        pauseOnHover
+                        type="success"
+                    />
                 </Container>
             </Modal>
             <Login showLogin={showLogin} setShowLogin={setShowLogin} setShowSignUp={setShowSignUp}></Login>

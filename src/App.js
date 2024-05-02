@@ -15,11 +15,10 @@ import TripResults from './components/pages/resultsPage/TripResults.jsx';
 import TripModal from './contexts/TripModal.js';
 import TripDataContext from './contexts/TripDataContext.js';
 import { loadStoredUserData } from './utils/utility.js';
-
+import Footer from './components/footer/Footer.jsx';
 
 
 function App() {
-
   const [userdata, setUserdata] = useState();
   const [showTripModal, setShowTripModal] = useState(false)
   const [tripToSeeMore, setTripToSeeMore] = useState(null)
@@ -27,7 +26,6 @@ function App() {
   const [showTripDialog, setShowTripDialog] = useState(false)
   const [formData, setFormData] = useState(null)
   const [tripData, setTripData] = useState(null)
-
 
   const handleLoadupSettings = () => {
     setUserdata(loadStoredUserData())
@@ -52,11 +50,12 @@ function App() {
                 <Route path='/googleMaps' element={<TestMaps />} />
                 <Route path='/results' element={<TripResults />} />
                 <Route path='/tripresults' element={<TripCard />} />
-                <Route path='/saved-trips' element={<TripCard />} />
-                <Route path='/my-trips' element={<TripCard />} />
-                <Route path='/my-reviews' element={<TripCard />} />
+                {userdata && <Route path='/saved-trips' element={<TripCard />} />}
+                {userdata && <Route path='/my-trips' element={<TripCard />} />}
+                {userdata && <Route path='/my-reviews' element={<TripCard />} />}
               </Routes>
             </Router>
+            <Footer />
           </TripDataContext.Provider>
         </TripModal.Provider>
       </UserData.Provider >

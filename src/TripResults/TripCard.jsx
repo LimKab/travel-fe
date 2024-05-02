@@ -18,6 +18,7 @@ import TripDataContext from '../contexts/TripDataContext';
 import WriteReview from '../components/smallerComponents/WriteReview';
 import { loadStoredToken } from '../utils/utility';
 import SignUp from '../components/modals/SignUp';
+import Login from '../components/modals/Login';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -365,6 +366,7 @@ function TripCard() {
                     />
                 </Container>
             </Modal>
+            <Login showLogin={showLogin} setShowLogin={setShowLogin} setShowSignUp={setShowSignUp}></Login>
             <SignUp showSignUp={showSignUp} setShowSignUp={setShowSignUp} setShowLogin={setShowLogin}></SignUp>
         </>
     )

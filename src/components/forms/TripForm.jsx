@@ -59,6 +59,8 @@ function TripForm({ initialFormData }) {
             // const results = response.data
             // console.log(results);
             // setTripData(results.response)
+            // setLoading(false)
+            // navigate('/results')
 
             setTimeout(() => {
                 setTripData(thailand.response)

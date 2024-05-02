@@ -16,7 +16,7 @@ function Home() {
             </div>
             <Box
                 minHeight={400}
-                height={540}
+                height={610}
                 maxWidth='100%'
                 my={4}
                 display="flex"

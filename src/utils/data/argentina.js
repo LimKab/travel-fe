@@ -1,6 +1,6 @@
 
 // { name: 'Argentina', code: 'AR' } AR Argentina
-const Argentina = [
+export const Argentina = [
     {
         "cityName": "Bariloche",
         "cityInfo": [

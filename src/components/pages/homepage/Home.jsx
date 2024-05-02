@@ -29,7 +29,7 @@ function Home() {
                 justifyContent="center"
                 sx={{ position: 'relative', zIndex: 2, bgcolor: { xs: colors.brandDarkGreen, md: `rgb(16,64,59, 0.3)` } }}
             >
-                <img src={Logo} alt="Logo" style={{ height: '300px', width: '300px' }} />
+                <img src={Logo} alt="Logo" className="bigLogoStyle" />
                 <Typography variant="h3" display="block" gutterBottom color={colors.brandWhite}>
                     Experience your AI generated trip!
                 </Typography>

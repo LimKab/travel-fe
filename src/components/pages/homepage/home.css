@@ -44,3 +44,9 @@
     width: 100vw;
     height: 150vh;
 }
+
+.bigLogoStyle {
+    height: 300px;
+    width: 300px;
+    margin: -30px;
+}

@@ -1,0 +1,46 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fc;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.about-container {
+    padding: 20px;
+}
+
+.about-container h1 {
+    text-align: center;
+    color: #333;
+}
+
+.about-container h2 {
+    color: #10403B;
+}
+
+.about-container p {
+    color: whitesmoke;
+}
+
+.team-section ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.team-section ul li {
+    margin-bottom: 10px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%;
+    }
+}

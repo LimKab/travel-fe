@@ -1,6 +1,6 @@
 import React from 'react';
 import Logo from '../../../utils/images/logopng.png';
-import '../authorsChoice/autors.css'
+import './autors.css'
 function AuthorsChoice() {
     return (
         <>

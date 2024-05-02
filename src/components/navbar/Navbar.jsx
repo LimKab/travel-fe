@@ -178,9 +178,6 @@ function NavBar() {
                                     {userdata && <MenuItem key='Edit Profile' onClick={() => navigate('/profile')}>
                                         <Typography textAlign="center" >Edit Profile</Typography>
                                     </MenuItem>}
-                                    {userdata && <MenuItem key='Logout' onClick={() => logout()}>
-                                        <Typography textAlign="center" >Logout</Typography>
-                                    </MenuItem>}
                                     {!userdata && <MenuItem key='Login' onClick={() => setShowLogin(true)}>
                                         <Typography textAlign="center" >Sign in</Typography>
                                     </MenuItem>}
@@ -195,6 +192,9 @@ function NavBar() {
                                     </MenuItem>}
                                     {userdata && <MenuItem key='My reviews' onClick={() => navigate('/my-reviews')}>
                                         <Typography textAlign="center" >My reviews</Typography>
+                                    </MenuItem>}
+                                    {userdata && <MenuItem key='Logout' onClick={() => logout()}>
+                                        <Typography textAlign="center" >Logout</Typography>
                                     </MenuItem>}
                                 </Menu>
                             </Box>

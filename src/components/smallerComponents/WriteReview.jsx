@@ -29,7 +29,7 @@ function WriteReview() {
     }
 
     const handlePostComment = async () => {
-        const response = await fetch(`http://localhost:3001/review`, {
+        const response = await fetch(`https://travel-guides-be.onrender.com/review`, {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json'

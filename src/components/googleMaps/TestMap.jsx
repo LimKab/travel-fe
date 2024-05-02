@@ -1,5 +1,5 @@
 import Button from "@mui/material/Button";
-import axios from "axios";
+// import axios from "axios";
 import GoogleMaps from "./GoogleMaps";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
@@ -8,15 +8,15 @@ import { useState } from "react";
 
 function TestMaps() {
     const [nameQuery, setNameQuery] = useState('Israel');
-    const [countryCode, setCountryCode] = useState('IL');
-    const [season] = useState('summer');
-    const [tripVibe] = useState('nature');
+    // const [countryCode, setCountryCode] = useState('IL');
+    // const [season] = useState('summer');
+    // const [tripVibe] = useState('nature');
 
     const gptButton = async () => {
         try {
-            const response = await axios.get(`http://localhost:3001/gpt/${countryCode}/${season}/${tripVibe}`);
-            console.log(response.data.response);
-            // Handle response data as needed
+            // const response = await axios.get(`http://localhost:3001/gpt/${countryCode}/${season}/${tripVibe}`);
+            // console.log(response.data.response);
+            // // Handle response data as needed
         } catch (error) {
             console.log(error.status);
         }
@@ -24,9 +24,9 @@ function TestMaps() {
 
     const googleButton = async () => {
         try {
-            const response = await axios.get(`http://localhost:3001/places/${nameQuery}`);
-            console.log("response", response);
-            // Handle response data as needed
+            // const response = await axios.get(`http://localhost:3001/places/${nameQuery}`);
+            // console.log("response", response);
+            // // Handle response data as needed
         } catch (error) {
             console.log(error.status);
         }
@@ -291,10 +291,10 @@ function TestMaps() {
                     value={nameQuery}
                     onChange={(e) => {
                         setNameQuery(e.target.value);
-                        const selectedCountry = countryOptions.find(country => country.name === e.target.value);
-                        if (selectedCountry) {
-                            setCountryCode(selectedCountry.code);
-                        }
+                        // const selectedCountry = countryOptions.find(country => country.name === e.target.value);
+                        // if (selectedCountry) {
+                        //     setCountryCode(selectedCountry.code);
+                        // }
                     }}
                 >
                     {countryOptions.map((country, index) => (

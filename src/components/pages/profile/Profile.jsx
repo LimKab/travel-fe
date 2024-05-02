@@ -63,7 +63,7 @@ function Profile() {
 
     try {
       const token = loadStoredToken()
-      const response = await axios.put(`http://localhost:3001/profile/${userdata._id}`, formData, {
+      const response = await axios.put(`https://travel-guides-be.onrender.com/profile/${userdata._id}`, formData, {
         headers: {
           'content-type': 'application/json',
           'authorization': token

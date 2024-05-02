@@ -1,5 +1,6 @@
 import React from 'react';
 import './about.css';
+import TravelVideoWrapper from '../homepage/TravelVideo';
 
 function About() {
     return (
@@ -32,6 +33,7 @@ function About() {
                     <p>We would like to express our deepest gratitude to our mentors Guy, Aviad, Roy and Karen who have teached us all we got to know and to prepare us for the this journey we are about to follow. Their guidance and wisdom have been invaluable in shaping us into what we are today.</p>
                 </div>
             </div>
+            <TravelVideoWrapper />
         </div>
     );
 }

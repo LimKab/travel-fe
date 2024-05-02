@@ -207,13 +207,14 @@ function TripCard() {
     }
 
     const handleSave = async () => {
-        toast("Your trip has been saved!")
-        setShowToast(true)
-        // const token = loadStoredToken()
-        // if (!token) {
-        //     setShowSignUp(true)
-        //     return
-        // }
+        const token = loadStoredToken()
+        if (!token) {
+            setShowSignUp(true)
+            return
+        } else {
+            toast("Your trip has been saved!")
+            setShowToast(true)
+        }
         // try {
         //     const response = await fetch(`http://localhost:3001/`, {
         //         method: 'POST',

@@ -1,0 +1,7 @@
+.watermark {
+    position: fixed;
+    opacity: 0.1;
+    top: -500px;
+    left: -40px;
+
+}

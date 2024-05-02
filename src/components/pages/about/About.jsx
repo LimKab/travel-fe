@@ -1,6 +1,6 @@
 import React from 'react';
 import './about.css';
-import TravelVideoWrapper from '../homepage/TravelVideo';
+import Logo from '../../../utils/images/logopng.png'
 
 function About() {
     return (
@@ -23,9 +23,9 @@ function About() {
                     <h2>Meet the Team</h2>
                     <p>TripGenie was founded by a team of passionate travelers and tech enthusiasts dedicated to reshaping the future of travel. Our diverse team brings together expertise in AI, software development, and travel industry insights to create an unparalleled user experience.</p>
                     <ul>
-                        <li><strong>Devorah</strong> Visionary entrepreneur with a passion for leveraging technology to simplify travel.</li>
-                        <li><strong>Euvgeni</strong> AI expert and coding wizard responsible for bringing our innovative ideas to life.</li>
-                        <li><strong>Limor</strong> Seasoned globetrotter with a knack for uncovering hidden gems and off-the-beaten-path destinations.</li>
+                        <li><strong>Devorah -</strong> Visionary entrepreneur with a passion for leveraging technology to simplify travel.</li>
+                        <li><strong>Euvgeni -</strong> AI expert and coding queen responsible for bringing our innovative ideas to life.</li>
+                        <li><strong>Limor -</strong> Seasoned globetrotter with a knack for uncovering hidden gems and off-the-beaten-path destinations.</li>
                     </ul>
                 </div>
                 <div className="gratitude-section">
@@ -33,7 +33,7 @@ function About() {
                     <p>We would like to express our deepest gratitude to our mentors Guy, Aviad, Roy and Karen who have teached us all we got to know and to prepare us for the this journey we are about to follow. Their guidance and wisdom have been invaluable in shaping us into what we are today.</p>
                 </div>
             </div>
-            <TravelVideoWrapper />
+            <img src={Logo} alt="Logo" className="watermark" />
         </div>
     );
 }
